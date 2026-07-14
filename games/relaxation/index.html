@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Parts Pickup Breathing - Mind Mechanics Workshop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container game-page">
+
+    <a href="../../index.html" class="back-link">&larr; Back to Workshop</a>
+
+    <header class="page-header">
+      <h1>Parts Pickup Breathing</h1>
+      <p class="subtitle">
+        Catch the falling car parts! Use your mouse to move the toolbox. Catch a star for a calm little break.
+      </p>
+    </header>
+
+
+    <div class="scoreboard">
+
+      <div class="score-pill score-pill--mint">
+        <img class="score-icon" src="images/carparts.png" alt="Car Parts">
+        <span>Parts: <strong id="parts-count">0</strong></span>
+      </div>
+
+
+      <div class="score-pill score-pill--periwinkle">
+        <img class="score-icon" src="images/sparkle.png" alt="Star">
+        <span>Stars: <strong id="sparkle-count">0</strong></span>
+      </div>
+
+    </div>
+
+
+
+    <div class="game-stage" id="game-stage">
+
+      <div class="start-overlay" id="start-overlay">
+        <button class="play-btn" id="play-btn">
+          Play 🔧
+        </button>
+      </div>
+
+
+      <div class="toolbox" id="toolbox">
+        <img src="images/toolbox.png" alt="Toolbox">
+      </div>
+
+
+    </div>
+
+
+    <p class="game-hint">
+      Step into the Mind Mechanics Workshop, where catching gears, wheels, and car parts creates small moments of calm.
+      Take a break, breathe deeply, and give your mind and body a chance to recharge.
+    </p>
+
+
+  </main>
+
+
+
+  <div class="relax-overlay" id="relax-overlay" hidden>
+
+    <div class="relax-card">
+
+      <div class="breathing-circle" id="breathing-circle"></div>
+
+      <h2 id="relax-title">Calm Moment</h2>
+
+      <p id="relax-text"></p>
+
+      <button class="relax-done-btn" id="relax-done-btn" hidden>
+        I'm done, back to the game
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <footer class="footer">
+    Created by Jenny Bian - 2026
+  </footer>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

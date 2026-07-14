@@ -1,0 +1,411 @@
+/* ===== Mind Mechanics Workshop — Style Sheet =====
+   Palette (tokens kept from the original design system, values repointed
+   from garden greens/teals to a workshop red/steel scheme so every page
+   that imports these tokens re-themes automatically):
+   --sky        #D9DEE3  (light steel)
+   --mint       #E8A0A0  (soft rust/red accent)
+   --seafoam    #F0D9D0  (warm pale rust)
+   --periwinkle #C9C9D9  (steel-violet gray)
+   --teal-deep  #B71C1C  (headings / accents — workshop red)
+   --teal-text  #4A2C2C  (body text — warm charcoal-red)
+   --cream      #F7F4F1  (page background)
+   --white      #FFFFFF
+*/
+
+:root {
+  --sky: #D9DEE3;
+  --mint: #E8A0A0;
+  --seafoam: #F0D9D0;
+  --periwinkle: #C9C9D9;
+  --teal-deep: #B71C1C;
+  --teal-text: #4A2C2C;
+  --cream: #F7F4F1;
+  --white: #FFFFFF;
+
+  --caution-yellow: #F5B400;
+  --steel: #8D99A6;
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow-soft: 0 8px 20px rgba(183, 28, 28, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--seafoam) 100%);
+  font-family: 'Quicksand', sans-serif;
+  color: var(--teal-text);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  margin: 0;
+}
+
+/* ===== Moving banner ===== */
+.banner {
+  width: 100%;
+  overflow: hidden;
+  background: var(--teal-deep);
+  padding: 12px 0;
+}
+
+.banner-track {
+  display: block;
+  animation: scroll-banner 30s linear infinite;
+}
+
+.banner-track span {
+  display: inline-block;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+@keyframes scroll-banner {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Normal, modest heading style — used on game pages */
+.page-header h1 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: var(--teal-deep);
+  letter-spacing: 0.3px;
+}
+
+/* Big glowing title style — homepage only */
+.home-header h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== Game grid ===== */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 800px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--teal-text);
+  padding: 16px 12px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 2px solid var(--white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover,
+.game-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(183, 28, 28, 0.25);
+}
+
+.game-card:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: 3px;
+}
+
+.game-card--mint       { background: var(--mint); }
+.game-card--sky        { background: var(--sky); }
+.game-card--seafoam    { background: var(--seafoam); }
+.game-card--periwinkle { background: var(--periwinkle); }
+
+/* ===== Parts Pickup Breathing card ===== */
+/* No car-parts art yet, so this card uses a flat color + emoji icon
+   fallback instead of a background image. Swap in a PNG later the same
+   way the other cards use their background images. */
+/* ===== Parts Pickup background ===== */
+/* ===== Parts Pickup background ===== */
+.parts-pickup-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.parts-pickup-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/carparts.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.parts-pickup-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide the wrench icon */
+.parts-pickup-card .game-icon {
+  display: none;
+}
+
+.game-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 6px;
+  background: transparent;
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-card h2 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.game-card p {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ===== Thinking Errors background (unchanged) ===== */
+.catthink-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.catthink-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/catthink.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.catthink-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== About section ===== */
+.about-section {
+  margin-top: 56px;
+  padding: 28px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.about-section h3 {
+  color: var(--teal-deep);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow:
+        0 0 6px rgba(255,255,255,0.8),
+        0 0 12px rgba(168,216,234,0.6);
+    animation: sparkleFade 1.5s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(0.2) translateY(10px);
+        opacity: 0;
+    }
+}
+
+/* ===== Workshop hazard-stripe border decoration =====
+   Straight top/bottom stripe bars replace the old vine border — keeps
+   the clean, non-skewed layout while reading as "workshop" rather than
+   "garden". */
+.workshop-decor {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.workshop-decor .stripe-top,
+.workshop-decor .stripe-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--teal-deep) 0 16px,
+    var(--caution-yellow) 16px 32px
+  );
+  opacity: 0.85;
+}
+
+.workshop-decor .stripe-top { top: 0; }
+.workshop-decor .stripe-bottom { bottom: 0; }
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  color: #7d6b6b;
+}
+
+.game-card h2,
+.game-card p {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  padding: 3px 10px;
+  box-shadow: 0 4px 10px rgba(183, 28, 28, 0.12);
+}
+
+/* ===== Anxiety Review background (unchanged) ===== */
+.anxiety-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.anxiety-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/bunny.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.67;
+  z-index: 0;
+}
+
+.anxiety-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Glow behind title (home page only) =====
+   Replaces the old cloud.png with a CSS glow — no image asset needed. */
+.home-header {
+  position: relative;
+}
+
+.home-header::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(183, 28, 28, 0.15) 0%, rgba(183, 28, 28, 0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.workshop-icons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.workshop-icons span {
+  position: absolute;
+  opacity: .15;
+  font-size: 3rem;
+}
+
+.workshop-icons span:nth-child(1) {
+  top: 15%;
+  left: 8%;
+}
+
+.workshop-icons span:nth-child(2) {
+  top: 60%;
+  right: 6%;
+}
+
+.workshop-icons span:nth-child(3) {
+  top: 35%;
+  right: 10%;
+}
+
+.workshop-icons span:nth-child(4) {
+  bottom: 12%;
+  left: 10%;
+}

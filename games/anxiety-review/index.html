@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anxiety Review - Mind Mechanics Workshop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container game-page">
+    <a href="../../index.html" class="back-link">&larr; Back to Workshop</a>
+
+    <header class="page-header">
+      <h1>Anxiety Review</h1>
+      <p class="subtitle">Click the bunny to go fishing! Answer the question that pops up to reel in a fish.</p>
+    </header>
+
+    <div class="progress-box">
+      <img src="images/fish.png" alt="Fish icon" class="progress-fish">
+      <p class="progress-text" id="progress-text">Fish caught: 0</p>
+    </div>
+
+    <div class="pond-stage" id="pond-stage">
+      <div class="start-overlay" id="start-overlay">
+        <button class="play-btn" id="play-btn">
+          Play 🐟
+        </button>
+      </div>
+
+      <p class="encourage-text" id="encourage-text"></p>
+      <div class="caught-fish-container" id="caught-fish-container"></div>
+      <button type="button" class="person-wrap" id="person-btn" aria-label="Click to go fishing">
+        <img id="person-sprite" src="images/standing.png" alt="Person standing by the pond" class="person-sprite">
+      </button>
+
+    </div>
+
+    <p class="game-hint">Learn more about anxiety as you fish in your Mind Mechanics Workshop pond!</p>
+  </main>
+
+  <!-- Quiz overlay -->
+  <div class="quiz-overlay" id="quiz-overlay" hidden>
+    <div class="quiz-card">
+      <div class="fish-icon-wrap">
+        <img id="fish-icon" src="images/fish.png" alt="A fish" class="fish-icon">
+      </div>
+      <h2 id="quiz-title">Something's on the line!</h2>
+      <p class="quiz-clue" id="quiz-clue"></p>
+      <div class="quiz-options">
+        <button class="quiz-option" id="option-a" type="button"></button>
+        <button class="quiz-option" id="option-b" type="button"></button>
+      </div>
+      <p class="quiz-feedback" id="quiz-feedback" hidden></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    Created by Jenny Bian - 2026
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

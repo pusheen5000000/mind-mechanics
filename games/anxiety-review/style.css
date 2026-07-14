@@ -1,0 +1,362 @@
+/* ===== Anxiety Review — game styles =====
+   Reuses the color variables (--sky, --mint, --seafoam, --periwinkle,
+   --teal-deep, --teal-text, --cream, --white, --radius-lg, --radius-md,
+   --shadow-soft) already defined in ../../style.css
+
+   Drop your own art into games/anxiety-review/images/ named:
+     pond.png              (background scene for the pond stage)
+     standing.png          (person standing, ready to fish)
+     fishing.png           (person actively fishing)
+     fish.png              (fish clipart for the question pop-up)
+
+   Until art is dropped in, each image quietly falls back to an emoji
+   so the game is playable right away.
+*/
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  color: var(--teal-deep);
+  text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  text-decoration: underline;
+}
+
+.game-page .page-header {
+  margin-bottom: 12px;
+}
+
+.progress-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  width: fit-content;
+  margin: 0 auto 20px;
+
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3px 15px;
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--white);
+}
+
+.progress-text {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--teal-text);
+  margin: 0;
+}
+
+.progress-fish {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* ===== Pond stage ===== */
+
+.pond-stage {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+  padding: 32px 20px 48px;
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+
+}
+
+.pond-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/pond.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.55; 
+  z-index: 0;
+}
+.pond-stage > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Encouragement text ===== */
+.encourage-text {
+  min-height: 28px;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--teal-deep);
+  text-align: center;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.encourage-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== The fisher ===== */
+.person-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.person-wrap:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: 6px;
+  border-radius: var(--radius-md);
+}
+
+.person-sprite {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(45, 95, 93, 0.25));
+  transition: transform 0.18s ease;
+}
+
+.person-wrap:hover .person-sprite,
+.person-wrap:focus-visible .person-sprite {
+  transform: scale(1.08);
+}
+
+/* While fishing (or waiting on a bite), the fisher can't be clicked again */
+.person-wrap.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.person-wrap.disabled .person-sprite {
+  transform: none;
+}
+
+.game-hint {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--teal-text);
+}
+
+/* ===== Quiz overlay ===== */
+.quiz-overlay[hidden] {
+  display: none !important;
+}
+
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 95, 93, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.quiz-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 32px 32px 36px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.fish-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.fish-icon {
+  width: 64px;
+  height: auto;
+  object-fit: contain;
+}
+
+.quiz-card h2 {
+  color: var(--teal-deep);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.quiz-clue {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--teal-text);
+  line-height: 1.5;
+  margin: 0 0 22px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.quiz-option {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--teal-text);
+  background: var(--cream);
+  border: 3px solid var(--white);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  cursor: pointer;
+  line-height: 1.4;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.quiz-option:hover:not(:disabled),
+.quiz-option:focus-visible:not(:disabled) {
+  transform: translateY(-2px);
+  background: var(--mint);
+  outline: none;
+}
+
+.quiz-option:disabled {
+  cursor: not-allowed;
+}
+
+.quiz-option.correct {
+  background: var(--mint);
+  color: var(--teal-deep);
+  transform: none;
+}
+
+.quiz-option.incorrect {
+  background: #f6b8b0;
+  color: #6e2a20;
+  transform: none;
+}
+
+.quiz-feedback {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.quiz-feedback.success {
+  color: var(--teal-deep);
+}
+
+.quiz-feedback.fail {
+  color: #b3392c;
+}
+
+.caught-fish {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    pointer-events: none;
+    animation: popIn .4s ease;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.caught-fish-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.caught-fish {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  animation: swim 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes swim {
+  from {
+    transform: translateX(-30px) translateY(0);
+  }
+
+  to {
+    transform: translateX(30px) translateY(-25px);
+  }
+}
+
+/* ===== Start Screen ===== */
+
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 95, 93, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.play-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+
+  color: var(--white);
+  background: var(--teal-deep);
+
+  border: 3px solid var(--white);
+  border-radius: var(--radius-md);
+
+  padding: 14px 30px;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover,
+.play-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
