@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mechanics Trivia Board - Mind Mechanics Workshop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container game-page">
+
+    <a href="../../index.html" class="back-link">&larr; Back to Workshop</a>
+
+    <header class="page-header">
+      <h1>Mechanics Trivia Board</h1>
+      <p class="subtitle">
+        Team trivia! Pick a category and point value, answer as a team, and race to the top of the leaderboard.
+      </p>
+    </header>
+
+    <!-- ===== Setup screen ===== -->
+    <section class="setup-card" id="setup-card">
+
+      <div class="name-field">
+        <label for="team-count">Number of teams</label>
+        <select id="team-count">
+          <option value="2">2 teams</option>
+          <option value="3">3 teams</option>
+          <option value="4">4 teams</option>
+        </select>
+      </div>
+
+      <div id="team-name-fields" class="team-name-fields">
+        <div class="name-field">
+          <label for="team1-name">Team 1 name</label>
+          <input type="text" id="team1-name" placeholder="Team 1" maxlength="16">
+        </div>
+        <div class="name-field">
+          <label for="team2-name">Team 2 name</label>
+          <input type="text" id="team2-name" placeholder="Team 2" maxlength="16">
+        </div>
+        <div class="name-field is-hidden" id="team3-field">
+          <label for="team3-name">Team 3 name</label>
+          <input type="text" id="team3-name" placeholder="Team 3" maxlength="16">
+        </div>
+        <div class="name-field is-hidden" id="team4-field">
+          <label for="team4-name">Team 4 name</label>
+          <input type="text" id="team4-name" placeholder="Team 4" maxlength="16">
+        </div>
+      </div>
+
+      <button class="play-btn" id="start-board-btn">Start Board 🧠</button>
+    </section>
+
+    <!-- ===== Board screen ===== -->
+    <section class="board-wrap is-hidden" id="board-wrap">
+
+      <div class="scoreboard" id="scoreboard"></div>
+
+      <div class="board" id="board"></div>
+
+    </section>
+
+    <p class="game-hint">
+      One player at a time reads a tile out loud, the team discusses, and the host reveals the answer and awards the points. Higher point values mean trickier questions!
+    </p>
+
+  </main>
+
+  <!-- ===== Question overlay ===== -->
+  <div class="question-overlay" id="question-overlay">
+    <div class="question-modal">
+      <p class="modal-category" id="modal-category">Category · 100</p>
+      <h2 class="modal-question" id="modal-question">Question goes here</h2>
+
+      <p class="modal-answer is-hidden" id="modal-answer"></p>
+
+      <button class="play-btn" id="reveal-answer-btn">Reveal Answer</button>
+
+      <div class="award-row is-hidden" id="award-row">
+        <p class="award-label">Who got it right?</p>
+        <div class="award-buttons" id="award-buttons"></div>
+        <button class="skip-btn" id="skip-btn">No one got it — skip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Winner overlay ===== -->
+  <div class="winner-overlay" id="winner-overlay">
+    <div class="winner-card">
+      <div class="winner-trophy">🏆</div>
+      <h2 id="winner-title">We have a winner!</h2>
+      <p id="winner-text"></p>
+      <button class="relax-done-btn" id="play-again-btn">Play Again</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    Created by Jenny Bian - 2026
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

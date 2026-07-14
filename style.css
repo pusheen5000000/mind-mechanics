@@ -142,6 +142,7 @@ h1, h2, h3 {
   box-shadow: var(--shadow-soft);
   border: 2px solid var(--white);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 200px;
 }
 
 .game-card:hover,
@@ -190,9 +191,11 @@ h1, h2, h3 {
   z-index: 1;
 }
 
-/* Hide the wrench icon */
+/* Icon stays invisible but keeps its reserved space so the heading below
+   lines up with cards that use an empty (spacer) icon div, like Kitty
+   and Bunny. Using visibility instead of display keeps the layout box. */
 .parts-pickup-card .game-icon {
-  display: none;
+  visibility: hidden;
 }
 
 .game-icon {
@@ -354,6 +357,7 @@ h1, h2, h3 {
   z-index: 0;
 }
 
+
 .anxiety-card > * {
   position: relative;
   z-index: 1;
@@ -408,4 +412,61 @@ h1, h2, h3 {
 .workshop-icons span:nth-child(4) {
   bottom: 12%;
   left: 10%;
+}
+
+/* ===== Quiz Race background ===== */
+.race-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.race-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/race.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.race-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon stays invisible but keeps its reserved space so the heading below
+   lines up with cards that use an empty (spacer) icon div, like Kitty
+   and Bunny. Using visibility instead of display keeps the layout box. */
+.race-card .game-icon {
+  visibility: hidden;
+}
+
+/* ===== Jeopardy background ===== */
+.jeopardy-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.jeopardy-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/jep.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.jeopardy-card > * {
+  position: relative;
+  z-index: 1;
 }

@@ -1,0 +1,357 @@
+/* ===== Mechanics Trivia Board — game styles =====
+   Reuses the color variables from ../../style.css
+*/
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  color: var(--teal-deep);
+  text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  text-decoration: underline;
+}
+
+.game-page .page-header {
+  margin-bottom: 24px;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+/* ===== Setup card ===== */
+
+.setup-card {
+  max-width: 460px;
+  margin: 0 auto 32px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.team-name-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.name-field label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--teal-deep);
+}
+
+.name-field input,
+.name-field select {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--sky);
+  background: var(--cream);
+  color: var(--teal-text);
+}
+
+.name-field input:focus-visible,
+.name-field select:focus-visible {
+  outline: 2px solid var(--teal-deep);
+  outline-offset: 2px;
+}
+
+.play-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--teal-deep);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover,
+.play-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* ===== Scoreboard ===== */
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.team-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-family: 'Quicksand', sans-serif;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--sky);
+  min-width: 110px;
+}
+
+.team-pill-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--teal-deep);
+}
+
+.team-pill-score {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--teal-text);
+}
+
+/* ===== Board ===== */
+
+.board-wrap {
+  max-width: 860px;
+  margin: 0 auto 32px;
+}
+
+.board {
+  display: grid;
+  gap: 8px;
+}
+
+.board-header {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--teal-deep);
+  border-radius: var(--radius-md);
+  padding: 10px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-tile {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--teal-text);
+  background: #C79B9B;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 18px 6px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.board-tile:hover:not(:disabled),
+.board-tile:focus-visible {
+  transform: translateY(-2px);
+  background: #A97A7A;
+  outline: none;
+}
+
+.board-tile:disabled {
+  background: var(--sky);
+  color: var(--sky);
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .board-tile {
+    font-size: 0.9rem;
+    padding: 14px 4px;
+  }
+
+  .board-header {
+    font-size: 0.7rem;
+    padding: 8px 2px;
+  }
+}
+
+/* ===== Question overlay ===== */
+
+.question-overlay,
+.winner-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 44, 44, 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.question-overlay.is-visible,
+.winner-overlay.is-visible {
+  display: flex;
+}
+
+.question-modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 32px 30px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--steel);
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 14px;
+}
+
+.modal-question {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
+  color: var(--teal-text);
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.modal-answer {
+  font-weight: 700;
+  color: var(--teal-deep);
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.award-row {
+  margin-top: 18px;
+}
+
+.award-label {
+  font-weight: 700;
+  color: var(--teal-deep);
+  margin-bottom: 10px;
+}
+
+.award-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.award-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--teal-text);
+  background: var(--cream);
+  border: 2px solid var(--sky);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.award-btn:hover,
+.award-btn:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--teal-deep);
+  outline: none;
+}
+
+.skip-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--teal-text);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===== Winner overlay ===== */
+
+.winner-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.winner-trophy {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.winner-card h2 {
+  color: var(--teal-deep);
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.winner-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.relax-done-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  background: var(--teal-deep);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.relax-done-btn:hover,
+.relax-done-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  outline: none;
+}

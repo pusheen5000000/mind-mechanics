@@ -1,0 +1,319 @@
+/* ===== Mind Mechanics Race — game styles =====
+   Reuses the color variables from ../../style.css
+*/
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  color: var(--teal-deep);
+  text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  text-decoration: underline;
+}
+
+.game-page .page-header {
+  margin-bottom: 24px;
+}
+
+/* ===== Setup card ===== */
+
+.setup-card {
+  max-width: 420px;
+  margin: 0 auto 32px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.name-field label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--teal-deep);
+}
+
+.name-field input {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--sky);
+  background: var(--cream);
+  color: var(--teal-text);
+}
+
+.name-field input:focus-visible {
+  outline: 2px solid var(--teal-deep);
+  outline-offset: 2px;
+}
+
+.play-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--teal-deep);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover,
+.play-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* ===== Visibility toggle pattern =====
+   default hidden via display:none, toggled with .is-visible / .is-hidden
+   rather than the [hidden] attribute (specificity conflicts elsewhere in
+   this project were traced back to that pattern). */
+
+.is-hidden {
+  display: none !important;
+}
+
+/* ===== Race area ===== */
+
+.race-wrap {
+  max-width: 720px;
+  margin: 0 auto 32px;
+}
+
+.turn-banner {
+  text-align: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  background: var(--teal-deep);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.track {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--white);
+  padding: 20px 60px 20px 20px;
+  margin-bottom: 20px;
+}
+
+.finish-flag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 1.6rem;
+}
+
+.lane {
+  margin-bottom: 16px;
+}
+
+.lane:last-child {
+  margin-bottom: 0;
+}
+
+.lane-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--teal-deep);
+  margin-bottom: 6px;
+}
+
+.lane-road {
+  position: relative;
+  height: 46px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--steel) 0 24px,
+    var(--sky) 24px 48px
+  );
+  overflow: hidden;
+}
+
+.car {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  font-size: 1.7rem;
+  transition: left 0.6s ease;
+}
+
+/* ===== Question card ===== */
+
+.question-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  text-align: center;
+}
+
+.question-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--steel);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.25rem;
+  color: var(--teal-text);
+  margin: 0 0 18px;
+  line-height: 1.35;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .answers {
+    grid-template-columns: 1fr;
+  }
+}
+
+.answer-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--teal-text);
+  background: var(--cream);
+  border: 2px solid var(--sky);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.answer-btn:hover:not(:disabled),
+.answer-btn:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--teal-deep);
+  outline: none;
+}
+
+.answer-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.answer-btn.is-correct {
+  background: #C8E6C9;
+  border-color: #4CAF50;
+  color: #1B5E20;
+}
+
+.answer-btn.is-wrong {
+  background: #F5C6C6;
+  border-color: #C62828;
+  color: #7A1E1E;
+}
+
+.feedback {
+  min-height: 1.4em;
+  margin-top: 14px;
+  font-weight: 700;
+  color: var(--teal-deep);
+}
+
+/* ===== Winner overlay ===== */
+
+.winner-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 44, 44, 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.winner-overlay.is-visible {
+  display: flex;
+}
+
+.winner-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.winner-trophy {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.winner-card h2 {
+  color: var(--teal-deep);
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.winner-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.relax-done-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  background: var(--teal-deep);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.relax-done-btn:hover,
+.relax-done-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  outline: none;
+}

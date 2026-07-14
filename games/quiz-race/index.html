@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mind Mechanics Race - Mind Mechanics Workshop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container game-page">
+
+    <a href="../../index.html" class="back-link">&larr; Back to Workshop</a>
+
+    <header class="page-header">
+      <h1>Mind Mechanics Race</h1>
+      <p class="subtitle">
+        Two racers, one track. Answer questions right to repair your engine and speed ahead — first car to the finish line wins!
+      </p>
+    </header>
+
+    <!-- ===== Setup screen ===== -->
+    <section class="setup-card" id="setup-card">
+      <div class="name-field">
+        <label for="p1-name">Racer 1 name</label>
+        <input type="text" id="p1-name" placeholder="Player 1" maxlength="16">
+      </div>
+
+      <div class="name-field">
+        <label for="p2-name">Racer 2 name</label>
+        <input type="text" id="p2-name" placeholder="Player 2" maxlength="16">
+      </div>
+
+      <button class="play-btn" id="start-race-btn">Start Race 🏁</button>
+    </section>
+
+    <!-- ===== Race screen ===== -->
+    <section class="race-wrap is-hidden" id="race-wrap">
+
+      <div class="turn-banner" id="turn-banner">Player 1's turn</div>
+
+      <div class="track" id="track">
+        <div class="finish-flag" aria-hidden="true">🏁</div>
+
+        <div class="lane">
+          <span class="lane-label" id="lane1-label">Player 1</span>
+          <div class="lane-road">
+            <div class="car car--p1" id="car1">🚗</div>
+          </div>
+        </div>
+
+        <div class="lane">
+          <span class="lane-label" id="lane2-label">Player 2</span>
+          <div class="lane-road">
+            <div class="car car--p2" id="car2">🚙</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card" id="question-card">
+        <p class="question-tag" id="question-tag">Thinking Trap</p>
+        <h2 class="question-text" id="question-text">Question goes here</h2>
+
+        <div class="answers" id="answers">
+          <button class="answer-btn" data-idx="0"></button>
+          <button class="answer-btn" data-idx="1"></button>
+          <button class="answer-btn" data-idx="2"></button>
+          <button class="answer-btn" data-idx="3"></button>
+        </div>
+
+        <p class="feedback" id="feedback" aria-live="polite"></p>
+      </div>
+
+    </section>
+
+    <p class="game-hint">
+      Take turns answering questions about thinking traps and coping skills. Every correct answer moves your car forward. First car to cross the finish line wins the race!
+    </p>
+
+  </main>
+
+  <!-- ===== Winner overlay ===== -->
+  <div class="winner-overlay" id="winner-overlay">
+    <div class="winner-card">
+      <div class="winner-trophy">🏆</div>
+      <h2 id="winner-title">We have a winner!</h2>
+      <p id="winner-text"></p>
+      <button class="relax-done-btn" id="play-again-btn">Race Again</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    Created by Jenny Bian - 2026
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
