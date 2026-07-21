@@ -25,104 +25,67 @@
 
   const WIN_CORRECT_ANSWERS = 8; // correct answers needed to cross the finish line
 
-  // Question bank mixes thinking-trap ID content with coping-skill content,
-  // written with teen-facing scenarios (school, friends, texting, social media).
+  // Question bank uses only the 9 Thinking Traps from the MindShift poster.
   const QUESTIONS = [
     {
       tag: 'Thinking Trap',
       text: 'Jamie bombs one quiz and thinks, "I\'m going to fail this whole class."',
-      options: ['Mind Reading', 'Catastrophizing', 'Personalization', 'Labeling'],
+      options: ['Mind-Reading', 'Catastrophizing', 'Over-Generalizing', 'Should Statements'],
       correct: 1,
     },
     {
       tag: 'Thinking Trap',
       text: 'A friend doesn\'t text back for an hour and you think, "They\'re mad at me."',
-      options: ['All-or-Nothing Thinking', 'Should Statements', 'Mind Reading', 'Blowing Things Up'],
+      options: ['Black and White Thinking', 'Should Statements', 'Mind-Reading', 'Fortune-Telling'],
       correct: 2,
     },
     {
       tag: 'Thinking Trap',
-      text: 'The group project got a low grade, and you think, "That\'s all my fault."',
-      options: ['Blame Me! (Personalization)', 'Negative Glasses', 'Fortune Telling', 'Labeling'],
+      text: '"I always mess things up." This is an example of...',
+      options: ['Over-Generalizing', 'Negative Brain Filter', 'Fortune-Telling', 'Emotional Reasoning'],
       correct: 0,
     },
     {
       tag: 'Thinking Trap',
       text: '"I should always be the top student, no matter what." This is an example of...',
-      options: ['Mind Reading', 'Should/Must Statements', 'Catastrophizing', 'All-or-Nothing Thinking'],
+      options: ['Mind-Reading', 'Should Statements', 'Catastrophizing', 'Over-Estimating Danger'],
       correct: 1,
     },
     {
       tag: 'Thinking Trap',
-      text: 'You got one comment wrong out of ten on a presentation, and think, "I did terribly."',
-      options: ['All-or-Nothing Thinking', 'Personalization', 'Fortune Telling', 'Should Statements'],
+      text: 'You got one comment wrong on a presentation and think, "I did terribly."',
+      options: ['Black and White Thinking', 'Over-Generalizing', 'Fortune-Telling', 'Should Statements'],
       correct: 0,
     },
     {
       tag: 'Thinking Trap',
       text: 'You only remember the one bad grade this term and forget the good ones.',
-      options: ['Fortune Telling', 'Negative Glasses (Mental Filter)', 'Blame Me!', 'Labeling'],
+      options: ['Fortune-Telling', 'Negative Brain Filter', 'Emotional Reasoning', 'Over-Estimating Danger'],
       correct: 1,
     },
     {
       tag: 'Thinking Trap',
       text: '"This party is going to be awkward and terrible, I just know it."',
-      options: ['Fortune Telling', 'Personalization', 'Should Statements', 'All-or-Nothing Thinking'],
+      options: ['Fortune-Telling', 'Over-Estimating Danger', 'Should Statements', 'Black and White Thinking'],
       correct: 0,
     },
     {
       tag: 'Thinking Trap',
       text: 'Missing one practice and thinking, "The coach will never trust me again."',
-      options: ['Mind Reading', 'Blowing Things Up (Catastrophizing)', 'Negative Glasses', 'Labeling'],
-      correct: 1,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Which skill helps calm your body first, before you try to think things through?',
-      options: ['Belly / Breathing Triangle', 'Staying up scrolling', 'Ignoring it completely', 'Venting to everyone at once'],
-      correct: 0,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Weighing the evidence for and against a worry, like a judge, is called...',
-      options: ['Worry Court', 'Coping Cards', 'Self-Talk', 'Grounding'],
-      correct: 0,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Replacing "I can\'t do this" with "I can try, one step at a time" is an example of...',
-      options: ['Worry Court', 'Positive Self-Talk', 'Catastrophizing', 'Avoidance'],
-      correct: 1,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Keeping a small written reminder of a helpful coping phrase for tough moments is called a...',
-      options: ['Thinking Trap', 'Coping Card', 'Worry Court', 'Mind Reading'],
-      correct: 1,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Naming 5 things you can see, 4 you can hear, and 3 you can touch is a...',
-      options: ['Grounding technique', 'Catastrophizing habit', 'Should Statement', 'Fortune Telling exercise'],
-      correct: 0,
-    },
-    {
-      tag: 'Coping Skill',
-      text: 'Which is a healthy way to handle test anxiety the night before?',
-      options: ['Cram until 3am', 'A short walk and steady sleep', 'Skip studying completely', 'Avoid thinking about it at all'],
+      options: ['Mind-Reading', 'Catastrophizing', 'Negative Brain Filter', 'Over-Generalizing'],
       correct: 1,
     },
     {
       tag: 'Thinking Trap',
-      text: 'Calling yourself "a total failure" after one bad game is an example of...',
-      options: ['Labeling', 'Worry Court', 'Grounding', 'Self-Talk'],
+      text: 'Believing the plane is definitely going to crash, even though it\'s very unlikely.',
+      options: ['Over-Estimating Danger', 'Emotional Reasoning', 'Should Statements', 'Mind-Reading'],
       correct: 0,
     },
     {
-      tag: 'Coping Skill',
-      text: 'Breathing in for 4, holding for 4, and out for 4 is known as...',
-      options: ['Box / Breathing Triangle', 'Fortune Telling', 'Mental Filter', 'Coping Card'],
-      correct: 0,
+      tag: 'Thinking Trap',
+      text: '"I feel like a fool, so I must have made a fool of myself." This is...',
+      options: ['Fortune-Telling', 'Emotional Reasoning', 'Over-Generalizing', 'Black and White Thinking'],
+      correct: 1,
     },
   ];
 
@@ -217,7 +180,7 @@
 
   function showWinner(player) {
     winnerTitle.textContent = `${player.name} wins the race!`;
-    winnerText.textContent = `${player.name} repaired their engine fastest and crossed the finish line first. Great work reading those thinking traps and coping skills!`;
+    winnerText.textContent = `${player.name} repaired their engine fastest and crossed the finish line first. Great work spotting those thinking traps!`;
     winnerOverlay.classList.add('is-visible');
   }
 

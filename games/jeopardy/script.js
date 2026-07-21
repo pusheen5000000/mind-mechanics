@@ -28,10 +28,10 @@
 
   const BOARD = {
     'Thinking Traps': [
-      { value: 100, q: 'Jamie fails one quiz and thinks, "I\'m going to fail the whole class."', a: 'Catastrophizing (Blowing Things Up)' },
-      { value: 200, q: 'A friend doesn\'t text back for an hour, so you assume, "They\'re mad at me."', a: 'Mind Reading' },
-      { value: 300, q: '"I should always get straight A\'s, no excuses." What trap is this?', a: 'Should / Must Statements' },
-      { value: 400, q: 'You get one critical comment on a project and think, "I did a terrible job."', a: 'All-or-Nothing Thinking' },
+      { value: 100, q: 'Believing you can predict the future and assuming it\'s going to be negative.', a: 'Fortune-Telling' },
+      { value: 200, q: 'Making sweeping judgments based on one or two experiences, using words like "always" or "never."', a: 'Over-Generalizing' },
+      { value: 300, q: 'Believing something is about to occur that is actually very unlikely.', a: 'Over-Estimating Danger' },
+      { value: 400, q: 'Only paying attention to the bad things that happen and ignoring all the good things.', a: 'Negative Brain Filter' },
     ],
     'Coping Skills': [
       { value: 100, q: 'Breathing in for 4, holding for 4, out for 4 — what\'s this technique called?', a: 'Box / Breathing Triangle' },
@@ -46,10 +46,10 @@
       { value: 400, q: 'Noticing tension building in your body before you snap at someone is called...', a: 'Recognizing early warning signs' },
     ],
     'Mixed Bag': [
-      { value: 100, q: 'True or False: Everyone experiences anxiety sometimes, not just people with anxiety disorders.', a: 'True' },
-      { value: 200, q: 'Talking to yourself with kindness instead of criticism is called...', a: 'Positive Self-Talk' },
-      { value: 300, q: 'True or False: Avoiding everything that makes you nervous makes anxiety go away long-term.', a: 'False — avoidance usually makes anxiety stronger over time' },
-      { value: 400, q: 'Blaming yourself completely for something that wasn\'t fully your fault is called...', a: 'Personalization (Blame Me!)' },
+      { value: 100, q: 'Imagining the worst possible thing will happen and that we won\'t be able to cope.', a: 'Catastrophizing' },
+      { value: 200, q: 'Believing you know exactly what others are thinking, and assuming it\'s negative.', a: 'Mind-Reading' },
+      { value: 300, q: 'Believing something is true based on feelings rather than facts.', a: 'Emotional Reasoning' },
+      { value: 400, q: 'Thinking of situations in extremes — either really good or really bad.', a: 'Black and White Thinking' },
     ],
   };
 

@@ -138,7 +138,7 @@ h1, h2, h3 {
   text-decoration: none;
   color: var(--teal-text);
   padding: 16px 12px;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   border: 2px solid var(--white);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -250,7 +250,7 @@ h1, h2, h3 {
   margin-top: 56px;
   padding: 28px;
   background: var(--white);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
@@ -272,7 +272,7 @@ h1, h2, h3 {
     width: 8px;
     height: 8px;
     background: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
+    border-radius: 0;
     pointer-events: none;
     box-shadow:
         0 0 6px rgba(255,255,255,0.8),
@@ -332,7 +332,7 @@ h1, h2, h3 {
 .game-card h2,
 .game-card p {
   background: rgba(255, 255, 255, 0.75);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 3px 10px;
   box-shadow: 0 4px 10px rgba(183, 28, 28, 0.12);
 }

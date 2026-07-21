@@ -1,36 +1,28 @@
-/* ===== Help Kitty Think — game logic =====
-   Drop your own art into games/thinking-errors/images/ named:
-     cat-0.png ... cat-5.png   (6 cat sprites, sad -> happy)
-     locked.png, unlocked.png (thought-bubble lock icons)
-*/
-
 (() => {
-  // The 6 thinking errors, adapted from the reference sheet.
-  // Each has a short kid-friendly description used as the "correct" quiz answer.
   const THINKING_ERRORS = [
     {
-      name: 'Negative Glasses',
-      description: 'Only seeing the things that go wrong, while anything good gets overlooked or ignored.',
+      name: 'Negative Brain Filter',
+      description: 'Only paying attention to the bad things that happen and ignoring all the good things.',
     },
     {
-      name: 'Blowing Things Up',
-      description: 'Taking something negative and making it seem much bigger and worse than it really is.',
+      name: 'Catastrophizing',
+      description: 'Imagining the worst possible thing is going to happen and that we will be unable to cope.',
     },
     {
-      name: 'Blame Me!',
-      description: 'Feeling responsible for bad things that happen, even when you had little or no control over them.',
+      name: 'Emotional Reasoning',
+      description: 'Believing something is true based on feelings rather than facts.',
     },
     {
-      name: '"Should" and "Must" Statements',
-      description: 'Setting standards or expectations for yourself that are so high they are almost impossible to reach.',
+      name: 'Should Statements',
+      description: 'Telling yourself how you "should" feel or behave.',
     },
     {
-      name: 'Mind Reading and Fortune Telling',
-      description: 'Assuming you know what other people are thinking, or deciding something bad will happen before it does.',
+      name: 'Mind-Reading and Fortune-Telling',
+      description: 'Believing you know exactly what others are thinking, or that you can predict the future and assume it will be negative.',
     },
     {
-      name: 'All-or-Nothing Thinking',
-      description: 'Seeing everything as either perfect or a total failure, with nothing in between.',
+      name: 'Black and White Thinking',
+      description: 'Thinking of situations in extremes, either really good or really bad.',
     },
   ];
 

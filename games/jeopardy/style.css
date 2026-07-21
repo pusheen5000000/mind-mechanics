@@ -30,7 +30,7 @@
   max-width: 460px;
   margin: 0 auto 32px;
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 28px 26px;
   display: flex;
@@ -62,7 +62,7 @@
   font-family: 'Quicksand', sans-serif;
   font-size: 1rem;
   padding: 10px 14px;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   border: 2px solid var(--sky);
   background: var(--cream);
   color: var(--teal-text);
@@ -81,7 +81,7 @@
   color: var(--white);
   background: var(--teal-deep);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 14px 22px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
@@ -110,7 +110,7 @@
   align-items: center;
   gap: 2px;
   padding: 10px 20px;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   font-family: 'Quicksand', sans-serif;
   background: var(--white);
   box-shadow: var(--shadow-soft);
@@ -150,7 +150,7 @@
   text-align: center;
   color: var(--white);
   background: var(--teal-deep);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 10px 4px;
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@
   color: var(--teal-text);
   background: #C79B9B;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 18px 6px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
@@ -219,7 +219,7 @@
 
 .question-modal {
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 32px 30px;
   max-width: 520px;
@@ -235,7 +235,7 @@
   color: var(--white);
   background: var(--steel);
   display: inline-block;
-  border-radius: 999px;
+  border-radius: 0;
   padding: 4px 14px;
   margin-bottom: 14px;
 }
@@ -252,7 +252,7 @@
   font-weight: 700;
   color: var(--teal-deep);
   background: var(--cream);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 14px;
   margin-bottom: 18px;
 }
@@ -282,7 +282,7 @@
   color: var(--teal-text);
   background: var(--cream);
   border: 2px solid var(--sky);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 10px 16px;
   cursor: pointer;
   transition: transform 0.12s ease, border-color 0.12s ease;
@@ -310,7 +310,7 @@
 
 .winner-card {
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 36px 32px;
   max-width: 420px;
@@ -343,7 +343,7 @@
   color: var(--white);
   background: var(--teal-deep);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 24px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;

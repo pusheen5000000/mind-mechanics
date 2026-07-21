@@ -26,7 +26,7 @@
   max-width: 420px;
   margin: 0 auto 32px;
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 28px 26px;
   display: flex;
@@ -51,7 +51,7 @@
   font-family: 'Quicksand', sans-serif;
   font-size: 1rem;
   padding: 10px 14px;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   border: 2px solid var(--sky);
   background: var(--cream);
   color: var(--teal-text);
@@ -69,7 +69,7 @@
   color: var(--white);
   background: var(--teal-deep);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 14px 22px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
@@ -105,7 +105,7 @@
   font-size: 1.2rem;
   color: var(--white);
   background: var(--teal-deep);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 10px 16px;
   margin-bottom: 18px;
   box-shadow: var(--shadow-soft);
@@ -114,7 +114,7 @@
 .track {
   position: relative;
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   border: 3px solid var(--white);
   padding: 20px 60px 20px 20px;
@@ -147,7 +147,7 @@
 .lane-road {
   position: relative;
   height: 46px;
-  border-radius: 999px;
+  border-radius: 0;
   background: repeating-linear-gradient(
     90deg,
     var(--steel) 0 24px,
@@ -174,7 +174,7 @@
 
 .question-card {
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 24px;
   text-align: center;
@@ -188,7 +188,7 @@
   text-transform: uppercase;
   color: var(--white);
   background: var(--steel);
-  border-radius: 999px;
+  border-radius: 0;
   padding: 4px 12px;
   margin-bottom: 10px;
 }
@@ -220,7 +220,7 @@
   color: var(--teal-text);
   background: var(--cream);
   border: 2px solid var(--sky);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 14px;
   cursor: pointer;
   text-align: left;
@@ -277,7 +277,7 @@
 
 .winner-card {
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 36px 32px;
   max-width: 420px;
@@ -310,7 +310,7 @@
   color: var(--white);
   background: var(--teal-deep);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 24px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;

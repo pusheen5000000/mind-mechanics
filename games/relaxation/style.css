@@ -37,7 +37,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  border-radius: 999px;
+  border-radius: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   box-shadow: var(--shadow-soft);
@@ -62,7 +62,7 @@
   height: 480px;
   max-height: 65vh;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
 
@@ -99,7 +99,7 @@
   background: var(--teal-deep);
 
   border: 3px solid var(--white);
-  border-radius: var(--radius-md);
+  border-radius: 0;
 
   padding: 14px 30px;
   cursor: pointer;
@@ -177,7 +177,7 @@
 
 .relax-card {
   background: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   box-shadow: var(--shadow-soft);
   padding: 36px 32px;
   max-width: 460px;
@@ -201,7 +201,7 @@
   width: 90px;
   height: 90px;
   margin: 0 auto 20px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--sky);
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
@@ -227,7 +227,7 @@
   color: var(--white);
   background: var(--teal-deep);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 24px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
