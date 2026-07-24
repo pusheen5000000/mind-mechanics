@@ -19,12 +19,11 @@
   --periwinkle: #C9C9D9;
   --teal-deep: #B71C1C;
   --teal-text: #4A2C2C;
-  --cream: #F7F4F1;
+  --cream: #9f9d9e;
   --white: #FFFFFF;
 
   --caution-yellow: #F5B400;
   --steel: #8D99A6;
-
   --radius-lg: 24px;
   --radius-md: 16px;
   --shadow-soft: 0 8px 20px rgba(183, 28, 28, 0.15);
@@ -37,13 +36,13 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--cream) 0%, var(--seafoam) 100%);
-  font-family: 'Quicksand', sans-serif;
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
   color: var(--teal-text);
 }
 
 h1, h2, h3 {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
 }
 
@@ -62,7 +61,7 @@ h1, h2, h3 {
 
 .banner-track span {
   display: inline-block;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--white);
@@ -94,7 +93,7 @@ h1, h2, h3 {
 .page-header h1 {
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 700;
-  color: var(--teal-deep);
+  color: white;
   letter-spacing: 0.3px;
 }
 
@@ -324,7 +323,7 @@ h1, h2, h3 {
   text-align: center;
   margin-top: 50px;
   padding: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   color: #7d6b6b;
 }
