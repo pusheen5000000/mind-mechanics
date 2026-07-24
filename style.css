@@ -470,3 +470,28 @@ h1, h2, h3 {
   position: relative;
   z-index: 1;
 }
+
+/* ===== Thought Wrench Matching background ===== */
+.wrench-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrench-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/wrench.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.wrench-card > * {
+  position: relative;
+  z-index: 1;
+}
