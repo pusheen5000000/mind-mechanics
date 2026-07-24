@@ -24,21 +24,34 @@
 
 .setup-card {
   max-width: 420px;
-  margin: 0 auto 32px;
-  background: var(--white);
-  border-radius: 0;
+  width: 90%;
+
+  margin: 100px auto 32px;
+
+  background: var(--mint);
+  border: 3px solid var(--white);
+
   box-shadow: var(--shadow-soft);
-  padding: 28px 26px;
+
+  padding: 32px 28px;
+
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+
+  text-align: center;
 }
 
-.name-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-align: left;
+.name-field input {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+
+  padding: 10px 14px;
+
+  border: 3px solid var(--white);
+
+  background: var(--sky);
+  color: var(--teal-text);
 }
 
 .name-field label {
@@ -53,7 +66,7 @@
   padding: 10px 14px;
   border-radius: 0;
   border: 2px solid var(--sky);
-  background: var(--cream);
+  background: var(--white);
   color: var(--teal-text);
 }
 
@@ -112,13 +125,12 @@
 }
 
 .track {
-  position: relative;
-  background: var(--white);
-  border-radius: 0;
-  box-shadow: var(--shadow-soft);
+  background: var(--sky);
   border: 3px solid var(--white);
+
+  box-shadow: var(--shadow-soft);
+
   padding: 20px 60px 20px 20px;
-  margin-bottom: 20px;
 }
 
 .finish-flag {
@@ -173,9 +185,11 @@
 /* ===== Question card ===== */
 
 .question-card {
-  background: var(--white);
-  border-radius: 0;
+  background: var(--seafoam);
+  border: 3px solid var(--white);
+
   box-shadow: var(--shadow-soft);
+
   padding: 24px;
   text-align: center;
 }
@@ -216,15 +230,16 @@
 .answer-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+
   color: var(--teal-text);
-  background: var(--cream);
-  border: 2px solid var(--sky);
-  border-radius: 0;
+
+  background: #F6B8B0;
+
+  border: 3px solid var(--white);
+
   padding: 12px 14px;
+
   cursor: pointer;
-  text-align: left;
-  transition: transform 0.12s ease, border-color 0.12s ease;
 }
 
 .answer-btn:hover:not(:disabled),
@@ -321,4 +336,48 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
   outline: none;
+}
+
+/* ===== Race Game Stage ===== */
+
+.race-stage {
+  position: relative;
+  min-height: 600px;
+  padding: 35px 25px;
+  overflow: hidden;
+
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+/* background image like Kitty stage */
+.race-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/race-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* keep game above background */
+.race-stage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.game-hint {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--teal-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 24px auto 0;
+  max-width: 700px;
 }
