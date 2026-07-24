@@ -74,16 +74,26 @@
   outline: 2px solid var(--teal-deep);
   outline-offset: 2px;
 }
+/* ===== Start Overlay ===== */
 
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(80, 80, 80, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
 .play-btn {
   font-family: 'Baloo 2', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.6rem;
+  padding: 20px 45px;
   font-weight: 700;
   color: var(--white);
   background: var(--teal-deep);
-  border: none;
+  border: 3px solid var(--white);
   border-radius: 0;
-  padding: 14px 22px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
   transition: transform 0.15s ease;
@@ -380,4 +390,13 @@
   line-height: 1.5;
   margin: 24px auto 0;
   max-width: 700px;
+}
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 95, 93, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
 }

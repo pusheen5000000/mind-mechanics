@@ -11,7 +11,8 @@
   const lane2Label = document.getElementById('lane2-label');
   const car1 = document.getElementById('car1');
   const car2 = document.getElementById('car2');
-
+  const playBtn = document.getElementById('play-btn');
+  const startOverlay = document.getElementById('start-overlay');
   const questionTag = document.getElementById('question-tag');
   const questionText = document.getElementById('question-text');
   const answersEl = document.getElementById('answers');
@@ -142,6 +143,9 @@
 
     answering = true;
   }
+  playBtn.addEventListener('click', () => {
+    startOverlay.style.display = 'none';
+  });
 
   function handleAnswer(idx) {
     if (!answering) return;
