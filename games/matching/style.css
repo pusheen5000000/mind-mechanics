@@ -21,8 +21,65 @@
   margin-bottom: 20px;
 }
 
-.accent {
-  color: var(--steel);
+
+/* ===== Game Stage ===== */
+
+.game-stage {
+  position: relative;
+  min-height: 600px;
+  padding: 35px 25px;
+  overflow: hidden;
+
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-soft);
+}
+.game-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.game-stage > * {
+  position: relative;
+  z-index: 1;
+}
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 95, 93, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 350px;
+  z-index: 20;
+}
+
+.play-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.6rem;
+  padding: 15px 40px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--teal-deep);
+  border: 3px solid var(--white);
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover,
+.play-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
 }
 
 /* ===== Progress gauge ===== */
@@ -32,8 +89,12 @@
   align-items: center;
   gap: 6px;
   margin: 0 auto 28px;
-}
 
+  background: rgba(255, 255, 255, 0.85);
+  border: 3px solid var(--teal-deep);
+  padding: 15px 25px;
+  width: fit-content;
+}
 .gauge {
   width: 220px;
   text-align: center;
@@ -47,7 +108,7 @@
 
 .gauge-track {
   fill: none;
-  stroke: var(--sky);
+  stroke: gray;
   stroke-width: 14;
   stroke-linecap: round;
 }
@@ -135,7 +196,7 @@
 }
 
 .cards {
-  background: var(--white);
+  background: lightgray;
   border: 2px dashed var(--sky);
   border-top: none;
   border-radius: 0;
@@ -150,7 +211,7 @@
 /* ===== Broken thought cards ===== */
 .trap-card {
   position: relative;
-  background: var(--cream);
+  background: var(--white);
   border: 2px solid var(--sky);
   border-radius: 0;
     padding: 10px 12px 10px 48px;

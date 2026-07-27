@@ -23,34 +23,44 @@
     <p class="subtitle">Every thought on the line has a description. Drag the right wrench onto each broken thought to fix it up!</p>
   </header>
 
-  <section class="gauge-wrap" aria-label="Progress">
-    <div class="gauge">
-      <svg viewBox="0 0 200 110" class="gauge-svg">
-        <path class="gauge-track" d="M10 100 A90 90 0 0 1 190 100" />
-        <path class="gauge-fill" id="gaugeFill" d="M10 100 A90 90 0 0 1 190 100" />
-        <g id="gaugeNeedle" class="gauge-needle" style="transform-origin: 100px 100px;">
-          <line x1="100" y1="100" x2="100" y2="30" />
-          <circle cx="100" cy="100" r="7" />
-        </g>
-      </svg>
-      <div class="gauge-label"><span id="fixedCount">0</span> / <span id="totalCount">9</span> repaired</div>
+  <section class="game-stage" id="game-stage">
+
+    <div class="start-overlay" id="start-overlay">
+      <button class="play-btn" id="play-btn">
+        Play
+      </button>
     </div>
-    <div class="status-chip" id="statusChip">Pick up a wrench to begin</div>
-  </section>
+
+    <section class="gauge-wrap" aria-label="Progress">
+      <div class="gauge">
+        <svg viewBox="0 0 200 110" class="gauge-svg">
+          <path class="gauge-track" d="M10 100 A90 90 0 0 1 190 100" />
+          <path class="gauge-fill" id="gaugeFill" d="M10 100 A90 90 0 0 1 190 100" />
+          <g id="gaugeNeedle" class="gauge-needle" style="transform-origin: 100px 100px;">
+            <line x1="100" y1="100" x2="100" y2="30" />
+            <circle cx="100" cy="100" r="7" />
+          </g>
+        </svg>
+        <div class="gauge-label"><span id="fixedCount">0</span> / <span id="totalCount">9</span> repaired</div>
+      </div>
+      <div class="status-chip" id="statusChip">Pick up a wrench to begin</div>
+    </section>
 
     <div class="board">
 
-    <div class="column column-tools">
+      <div class="column column-tools">
         <h2 class="col-title">Toolbox Definitions</h2>
         <div class="cards tools" id="toolsList"></div>
-    </div>
+      </div>
 
-    <div class="column column-traps">
+      <div class="column column-traps">
         <h2 class="col-title">Thinking traps</h2>
         <div class="cards traps" id="trapsList"></div>
-    </div>
+      </div>
 
     </div>
+
+  </section>
 
 </main>
 

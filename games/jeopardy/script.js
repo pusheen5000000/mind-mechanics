@@ -10,6 +10,13 @@
   const scoreboardEl = document.getElementById('scoreboard');
   const boardEl = document.getElementById('board');
 
+  const playBtn = document.getElementById('play-btn');
+  const startOverlay = document.getElementById('start-overlay');
+
+  playBtn.addEventListener('click', () => {
+    startOverlay.style.display = 'none';
+  });
+  
   const questionOverlay = document.getElementById('question-overlay');
   const modalCategory = document.getElementById('modal-category');
   const modalQuestion = document.getElementById('modal-question');
@@ -56,7 +63,7 @@
   const CATEGORIES = Object.keys(BOARD);
 
   let teams = [];
-  let currentTile = null; // { categoryIndex, value, q, a, btnEl }
+  let currentTile = null;
   let tilesRemaining = 0;
 
   function updateTeamFieldVisibility() {

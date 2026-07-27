@@ -1,12 +1,21 @@
 (function () {
   const GEAR_ICON = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z" stroke="#a8461f" stroke-width="1.6"/>
-    <path d="M12 2.5v2.3M12 19.2v2.3M21.5 12h-2.3M4.8 12H2.5M18.5 5.5l-1.6 1.6M7.1 16.9l-1.6 1.6M18.5 18.5l-1.6-1.6M7.1 7.1 5.5 5.5" stroke="#a8461f" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M19.4 13.5c.1-.5.1-1 0-1.5l2-1.5-2-3.5-2.4 1a7.2 7.2 0 0 0-1.3-.8L15.5 4h-4l-.4 2.7c-.5.2-.9.4-1.3.8l-2.4-1-2 3.5 2 1.5c-.1.5-.1 1 0 1.5l-2 1.5 2 3.5 2.4-1c.4.3.8.6 1.3.8l.4 2.7h4l.4-2.7c.5-.2.9-.4 1.3-.8l2.4 1 2-3.5-2.2-1.5Z" 
+    stroke="#a8461f" 
+    stroke-width="1.6" 
+    stroke-linejoin="round"/>
+    
+    <circle cx="13.5" cy="12" r="3" stroke="#a8461f" stroke-width="1.6"/>
   </svg>`;
-
   const WRENCH_ICON = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.7 3.3a4.5 4.5 0 0 0-5.9 5.4L4 16.5a2 2 0 0 0 2.8 2.8L14.6 11a4.5 4.5 0 0 0 5.4-5.9l-2.6 2.6-2-2 2.6-2.6Z" stroke="#3e5c76" stroke-width="1.6" stroke-linejoin="round"/>
   </svg>`;
+  const playBtn = document.getElementById('play-btn');
+  const startOverlay = document.getElementById('start-overlay');
+
+  playBtn.addEventListener('click', () => {
+    startOverlay.style.display = 'none';
+  });
 
   // Content adapted from thinking-trap concepts (Fortune-Telling, Over-Generalizing,
   // Overestimating Danger, Negative Brain Filter, Catastrophizing, Should Statements,
@@ -166,9 +175,25 @@ let PAIRS = [];
     gaugeFill.style.strokeDashoffset = String(GAUGE_DASH * (1 - ratio));
     gaugeNeedle.style.transform = `rotate(${-90 + ratio * 180}deg)`;
   }
+  function getUniqueToolPairs(count) {
+  const shuffled = shuffle(ALL_PAIRS);
+  const seen = new Set();
+  const unique = [];
+
+  for (const pair of shuffled) {
+    if (!seen.has(pair.tool)) {
+      seen.add(pair.tool);
+      unique.push(pair);
+    }
+
+    if (unique.length === count) break;
+  }
+
+  return unique;
+}
 
   function buildBoard() {
-    PAIRS = shuffle(ALL_PAIRS).slice(0, 9);
+    PAIRS = getUniqueToolPairs(9);
     trapsList.innerHTML = "";
     toolsList.innerHTML = "";
     fixedCount = 0;
