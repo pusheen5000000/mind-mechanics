@@ -1,16 +1,3 @@
-/* ===== Mind Mechanics Workshop — Style Sheet =====
-   Palette (tokens kept from the original design system, values repointed
-   from garden greens/teals to a workshop red/steel scheme so every page
-   that imports these tokens re-themes automatically):
-   --sky        #D9DEE3  (light steel)
-   --mint       #E8A0A0  (soft rust/red accent)
-   --seafoam    #F0D9D0  (warm pale rust)
-   --periwinkle #C9C9D9  (steel-violet gray)
-   --teal-deep  #B71C1C  (headings / accents — workshop red)
-   --teal-text  #4A2C2C  (body text — warm charcoal-red)
-   --cream      #F7F4F1  (page background)
-   --white      #FFFFFF
-*/
 
 :root {
   --sky: #D9DEE3;
@@ -113,7 +100,7 @@ h1, h2, h3 {
 /* ===== Game grid ===== */
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
 
