@@ -1,12 +1,23 @@
+/* ===== Mind Mechanics Workshop — Style Sheet =====
+   Palette (workshop red/steel scheme):
+   --steel-light #D9DEE3  (light steel)
+   --rust        #E8A0A0  (soft rust/red accent)
+   --pale-rust   #F0D9D0  (warm pale rust)
+   --steel-gray  #C9C9D9  (steel-violet gray)
+   --red-deep    #B71C1C  (headings / accents — workshop red)
+   --charcoal-red #4A2C2C (body text — warm charcoal-red)
+   --gray-bg     #c2c1c1  (page background)
+   --white       #FFFFFF
+*/
 
 :root {
-  --sky: #D9DEE3;
-  --mint: #E8A0A0;
-  --seafoam: #F0D9D0;
-  --periwinkle: #C9C9D9;
-  --teal-deep: #B71C1C;
-  --teal-text: #4A2C2C;
-  --cream: #c2c1c1;
+  --steel-light: #D9DEE3;
+  --rust: #E8A0A0;
+  --pale-rust: #F0D9D0;
+  --steel-gray: #C9C9D9;
+  --red-deep: #B71C1C;
+  --charcoal-red: #4A2C2C;
+  --gray-bg: #c2c1c1;
   --white: #FFFFFF;
 
   --caution-yellow: #F5B400;
@@ -23,9 +34,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--cream);
+  background: var(--gray-bg);
   font-family: 'DM Sans', sans-serif;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
 h1, h2, h3 {
@@ -37,7 +48,7 @@ h1, h2, h3 {
 .banner {
   width: 100%;
   overflow: hidden;
-  background: var(--teal-deep);
+  background: var(--red-deep);
   padding: 12px 0;
 }
 
@@ -84,11 +95,12 @@ h1, h2, h3 {
   letter-spacing: 0.3px;
 }
 
-/* Big glowing title style — homepage only */
-.home-header h1 {
-  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.title-banner {
+  max-width: 100%;
+  width: 940px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .subtitle {
@@ -122,7 +134,7 @@ h1, h2, h3 {
   align-items: center;
   text-align: center;
   text-decoration: none;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   padding: 16px 12px;
   border-radius: 0;
   box-shadow: var(--shadow-soft);
@@ -138,14 +150,14 @@ h1, h2, h3 {
 }
 
 .game-card:focus-visible {
-  outline: 3px solid var(--teal-deep);
+  outline: 3px solid var(--red-deep);
   outline-offset: 3px;
 }
 
-.game-card--mint       { background: var(--mint); }
-.game-card--sky        { background: var(--sky); }
-.game-card--seafoam    { background: var(--seafoam); }
-.game-card--periwinkle { background: var(--periwinkle); }
+.game-card--rust       { background: var(--rust); }
+.game-card--steel-light { background: var(--steel-light); }
+.game-card--pale-rust  { background: var(--pale-rust); }
+.game-card--steel-gray { background: var(--steel-gray); }
 
 /* ===== Parts Pickup Breathing card ===== */
 /* No car-parts art yet, so this card uses a flat color + emoji icon
@@ -242,7 +254,7 @@ h1, h2, h3 {
 }
 
 .about-section h3 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-size: 1.4rem;
   margin-bottom: 10px;
 }
@@ -297,7 +309,7 @@ h1, h2, h3 {
   height: 14px;
   background: repeating-linear-gradient(
     45deg,
-    var(--teal-deep) 0 16px,
+    var(--red-deep) 0 16px,
     var(--caution-yellow) 16px 32px
   );
   opacity: 0.85;

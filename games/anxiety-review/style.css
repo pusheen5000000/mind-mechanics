@@ -1,24 +1,9 @@
-/* ===== Anxiety Review — game styles =====
-   Reuses the color variables (--sky, --mint, --seafoam, --periwinkle,
-   --teal-deep, --teal-text, --cream, --white, --radius-lg, --radius-md,
-   --shadow-soft) already defined in ../../style.css
-
-   Drop your own art into games/anxiety-review/images/ named:
-     pond.png              (background scene for the pond stage)
-     standing.png          (person standing, ready to fish)
-     fishing.png           (person actively fishing)
-     fish.png              (fish clipart for the question pop-up)
-
-   Until art is dropped in, each image quietly falls back to an emoji
-   so the game is playable right away.
-*/
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -53,7 +38,7 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 800;
   font-size: 1rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   margin: 0;
 }
 
@@ -62,8 +47,6 @@
   height: 30px;
   object-fit: contain;
 }
-
-/* ===== Pond stage ===== */
 
 .pond-stage {
   position: relative;
@@ -79,20 +62,17 @@
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
-
 }
 
 .pond-stage::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background-image: url("images/pond.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  opacity: 0.55; 
+  opacity: 0.55;
   z-index: 0;
 }
 .pond-stage > * {
@@ -100,13 +80,12 @@
   z-index: 1;
 }
 
-/* ===== Encouragement text ===== */
 .encourage-text {
   min-height: 28px;
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-align: center;
   margin: 0;
   opacity: 0;
@@ -119,7 +98,6 @@
   transform: translateY(0);
 }
 
-/* ===== The fisher ===== */
 .person-wrap {
   position: relative;
   display: flex;
@@ -133,7 +111,7 @@
 }
 
 .person-wrap:focus-visible {
-  outline: 3px solid var(--teal-deep);
+  outline: 3px solid var(--red-deep);
   outline-offset: 6px;
   border-radius: 0;
 }
@@ -151,7 +129,6 @@
   transform: scale(1.08);
 }
 
-/* While fishing (or waiting on a bite), the fisher can't be clicked again */
 .person-wrap.disabled {
   cursor: default;
   pointer-events: none;
@@ -166,10 +143,9 @@
   margin-top: 14px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
-/* ===== Quiz overlay ===== */
 .quiz-overlay[hidden] {
   display: none !important;
 }
@@ -209,7 +185,7 @@
 }
 
 .quiz-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-size: 1.3rem;
   margin-bottom: 12px;
 }
@@ -217,7 +193,7 @@
 .quiz-clue {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   line-height: 1.5;
   margin: 0 0 22px;
 }
@@ -233,8 +209,8 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--teal-text);
-  background: var(--cream);
+  color: var(--charcoal-red);
+  background: var(--pale-rust);
   border: 3px solid var(--white);
   border-radius: 0;
   padding: 16px 18px;
@@ -247,7 +223,7 @@
 .quiz-option:hover:not(:disabled),
 .quiz-option:focus-visible:not(:disabled) {
   transform: translateY(-2px);
-  background: var(--mint);
+  background: var(--rust);
   outline: none;
 }
 
@@ -256,8 +232,8 @@
 }
 
 .quiz-option.correct {
-  background: var(--mint);
-  color: var(--teal-deep);
+  background: var(--rust);
+  color: var(--red-deep);
   transform: none;
 }
 
@@ -274,7 +250,7 @@
 }
 
 .quiz-feedback.success {
-  color: var(--teal-deep);
+  color: var(--red-deep);
 }
 
 .quiz-feedback.fail {
@@ -314,18 +290,14 @@
   animation: swim 2s ease-in-out infinite alternate;
 }
 
-
 @keyframes swim {
   from {
     transform: translateX(-30px) translateY(0);
   }
-
   to {
     transform: translateX(30px) translateY(-25px);
   }
 }
-
-/* ===== Start Screen ===== */
 
 .start-overlay {
   position: absolute;
@@ -343,7 +315,7 @@
   font-weight: 700;
 
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
 
   border: 3px solid var(--white);
   border-radius: 0;

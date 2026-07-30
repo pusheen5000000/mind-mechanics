@@ -1,15 +1,9 @@
-/* ===== Parts Pickup Breathing — game styles =====
-   Reuses the color variables from ../style.css
-*/
-
-/* ===== Back link ===== */
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -21,8 +15,6 @@
 .game-page .page-header {
   margin-bottom: 24px;
 }
-
-/* ===== Scoreboard ===== */
 
 .scoreboard {
   display: flex;
@@ -44,17 +36,14 @@
   border: 3px solid var(--white);
 }
 
-.score-pill--mint       { background: var(--mint); }
-.score-pill--periwinkle { background: var(--periwinkle); }
+.score-pill--mint       { background: var(--rust); }
+.score-pill--periwinkle { background: var(--steel-gray); }
 
 .score-icon {
   width: 40px;
   height: 30px;
   object-fit: contain;
 }
-
-
-/* ===== Game stage ===== */
 
 .game-stage {
   position: relative;
@@ -66,7 +55,6 @@
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
 
-  /* changed garden → workshop */
   background-image: url("images/garden-background.png");
 
   background-size: cover;
@@ -75,9 +63,6 @@
   touch-action: none;
   cursor: pointer;
 }
-
-
-/* ===== Start Screen ===== */
 
 .start-overlay {
   position: absolute;
@@ -89,14 +74,13 @@
   z-index: 20;
 }
 
-
 .play-btn {
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
 
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
 
   border: 3px solid var(--white);
   border-radius: 0;
@@ -113,10 +97,6 @@
   transform: translateY(-3px);
   outline: none;
 }
-
-
-/* ===== Toolbox ===== */
-/* same position/size as basket, only renamed */
 
 .toolbox {
   position: absolute;
@@ -137,9 +117,6 @@
   display: block;
 }
 
-
-/* ===== Falling car parts ===== */
-
 .falling-item {
   position: absolute;
   width: 50px;
@@ -156,9 +133,6 @@
   object-fit: contain;
   display: block;
 }
-
-
-/* ===== Relaxation overlay ===== */
 
 .relax-overlay[hidden] {
   display: none !important;
@@ -186,7 +160,7 @@
 }
 
 .relax-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-size: 1.6rem;
   margin-bottom: 14px;
 }
@@ -202,16 +176,16 @@
   height: 90px;
   margin: 0 auto 20px;
   border-radius: 0;
-  background: var(--sky);
+  background: var(--steel-light);
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
   animation: breathe 4s ease-in-out infinite;
 }
 
 @keyframes breathe {
-  0%   { transform: scale(0.85); background: var(--sky); }
-  50%  { transform: scale(1.15); background: var(--mint); }
-  100% { transform: scale(0.85); background: var(--sky); }
+  0%   { transform: scale(0.85); background: var(--steel-light); }
+  50%  { transform: scale(1.15); background: var(--rust); }
+  100% { transform: scale(0.85); background: var(--steel-light); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -225,7 +199,7 @@
   font-weight: 700;
   font-size: 1rem;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: none;
   border-radius: 0;
   padding: 12px 24px;

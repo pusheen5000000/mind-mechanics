@@ -1,13 +1,9 @@
-/* ===== Mechanics Trivia Board — game styles =====
-   Reuses the color variables from ../../style.css
-*/
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -24,8 +20,6 @@
   display: none !important;
 }
 
-/* ===== Board Stage ===== */
-
 .board-stage {
   position: relative;
   min-height: 600px;
@@ -40,12 +34,10 @@
   content: "";
   position: absolute;
   inset: 0;
-
   background-image: url("images/board-background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   opacity: 0.8;
   z-index: 0;
 }
@@ -93,7 +85,7 @@
 .name-field label {
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
 }
 
 .name-field input,
@@ -102,14 +94,14 @@
   font-size: 1rem;
   padding: 10px 14px;
   border-radius: 0;
-  border: 2px solid var(--sky);
+  border: 2px solid var(--steel-light);
   background: white;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
 .name-field input:focus-visible,
 .name-field select:focus-visible {
-  outline: 2px solid var(--teal-deep);
+  outline: 2px solid var(--red-deep);
   outline-offset: 2px;
 }
 
@@ -118,7 +110,7 @@
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: 3px solid var(--white);
   border-radius: 0;
   padding: 20px 40px;
@@ -151,21 +143,21 @@
   font-family: 'Quicksand', sans-serif;
   background: var(--white);
   box-shadow: var(--shadow-soft);
-  border: 3px solid var(--sky);
+  border: 3px solid var(--steel-light);
   min-width: 110px;
 }
 
 .team-pill-name {
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
 }
 
 .team-pill-score {
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
 .board-wrap {
@@ -184,7 +176,7 @@
   font-size: 0.85rem;
   text-align: center;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border-radius: 0;
   padding: 10px 4px;
   display: flex;
@@ -196,7 +188,7 @@
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   background: #C79B9B;
   border: none;
   border-radius: 0;
@@ -214,8 +206,8 @@
 }
 
 .board-tile:disabled {
-  background: var(--sky);
-  color: var(--sky);
+  background: var(--steel-light);
+  color: var(--steel-light);
   cursor: default;
   box-shadow: none;
   transform: none;
@@ -276,14 +268,14 @@
 .modal-question {
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.3rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   line-height: 1.4;
   margin: 0 0 18px;
 }
 
 .modal-answer {
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   background: lightgray;
   border-radius: 0;
   padding: 14px;
@@ -296,7 +288,7 @@
 
 .award-label {
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   margin-bottom: 10px;
 }
 
@@ -312,9 +304,9 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--teal-text);
-  background: var(--cream);
-  border: 2px solid var(--sky);
+  color: var(--charcoal-red);
+  background: var(--pale-rust);
+  border: 2px solid var(--steel-light);
   border-radius: 0;
   padding: 10px 16px;
   cursor: pointer;
@@ -324,7 +316,7 @@
 .award-btn:hover,
 .award-btn:focus-visible {
   transform: translateY(-2px);
-  border-color: var(--teal-deep);
+  border-color: var(--red-deep);
   outline: none;
 }
 
@@ -332,7 +324,7 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   background: none;
   border: none;
   text-decoration: underline;
@@ -355,7 +347,7 @@
 }
 
 .winner-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -372,7 +364,7 @@
   font-weight: 700;
   font-size: 1rem;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: none;
   border-radius: 0;
   padding: 12px 24px;
@@ -391,7 +383,7 @@
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   font-size: 1rem;
   line-height: 1.5;
   margin: 24px auto 0;

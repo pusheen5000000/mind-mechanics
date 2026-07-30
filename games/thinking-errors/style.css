@@ -1,19 +1,9 @@
-/* ===== Help Kitty Think — game styles =====
-   Reuses the color variables (--sky, --mint, --seafoam, --periwinkle,
-   --teal-deep, --teal-text, --cream, --white, --radius-lg, --radius-md,
-   --shadow-soft) already defined in ../../style.css
-
-   Drop your own art into games/thinking-errors/images/ named:
-     cat-0.png ... cat-5.png   (6 cat sprites, sad -> happy)
-     locked.png, unlocked.png (thought-bubble lock icons)
-*/
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -30,11 +20,10 @@
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   margin-bottom: 20px;
 }
 
-/* ===== Kitty stage ===== */
 .kitty-stage {
   position: relative;
   width: 100%;
@@ -62,16 +51,15 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity: 0.75;   /* Change this to make it lighter or darker */
+  opacity: 0.75;
   z-index: 0;
 }
 
-/* Keep all game elements above the background */
 .kitty-stage > * {
   position: relative;
   z-index: 1;
 }
-/* ===== Start Screen ===== */
+
 .start-overlay {
   position: absolute;
   inset: 0;
@@ -88,7 +76,7 @@
   font-weight: 700;
 
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
 
   border: 3px solid var(--white);
   border-radius: 0;
@@ -106,7 +94,6 @@
   outline: none;
 }
 
-/* ===== Thought bubble row ===== */
 .bubble-row {
   display: flex;
   flex-wrap: wrap;
@@ -122,7 +109,7 @@
   border-radius: 0;
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
-  background: var(--mint);
+  background: var(--rust);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +119,7 @@
 }
 
 .thought-bubble:nth-child(even) {
-  background: var(--periwinkle);
+  background: var(--steel-gray);
 }
 
 .thought-bubble .bubble-icon {
@@ -164,13 +151,12 @@
   pointer-events: none;
 }
 
-/* ===== Encouragement text ===== */
 .encourage-text {
   min-height: 28px;
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-align: center;
   margin: 0;
   opacity: 0;
@@ -183,7 +169,6 @@
   transform: translateY(0);
 }
 
-/* ===== Cat ===== */
 .cat-wrap {
   position: relative;
   display: flex;
@@ -199,8 +184,6 @@
   transition: transform 0.15s ease;
 }
 
-/* Petting mode: cat grows a little on hover, and gives a happy little
-   bounce when clicked. Only active once the game is finished. */
 .kitty-stage.petting-mode {
   cursor: pointer;
 }
@@ -220,7 +203,6 @@
   animation: pet-bounce 0.4s ease;
 }
 
-/* Hearts that pop out of the cat when petted */
 .floating-heart {
   position: absolute;
   width: 28px;
@@ -242,10 +224,9 @@
   margin-top: 14px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
-/* ===== Quiz overlay ===== */
 .quiz-overlay[hidden],
 .finish-overlay[hidden] {
   display: none !important;
@@ -280,7 +261,7 @@
 }
 
 .quiz-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-size: 1.4rem;
   margin-bottom: 22px;
 }
@@ -296,8 +277,8 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--teal-text);
-  background: var(--cream);
+  color: var(--charcoal-red);
+  background: var(--pale-rust);
   border: 3px solid var(--white);
   border-radius: 0;
   padding: 16px 18px;
@@ -310,7 +291,7 @@
 .quiz-option:hover:not(:disabled),
 .quiz-option:focus-visible:not(:disabled) {
   transform: translateY(-2px);
-  background: var(--mint);
+  background: var(--rust);
   outline: none;
 }
 
@@ -330,7 +311,6 @@
   color: #b3392c;
 }
 
-/* ===== Finish overlay ===== */
 .finish-cat {
   width: 150px;
   height: auto;
@@ -339,7 +319,7 @@
 }
 
 .finish-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-size: 1.6rem;
   margin-bottom: 12px;
 }
@@ -362,8 +342,8 @@
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--teal-deep);
-  background: var(--periwinkle);
+  color: var(--red-deep);
+  background: var(--steel-gray);
   border: 3px solid var(--white);
   border-radius: 0;
   padding: 10px 20px;
@@ -381,13 +361,13 @@
 
 .strategies-list {
   text-align: left;
-  background: var(--cream);
+  background: var(--pale-rust);
   border-radius: 0;
   padding: 16px 20px 16px 36px;
   margin: 0 0 18px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   line-height: 1.5;
 }
 
@@ -415,12 +395,12 @@
 
 .relax-done-btn {
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
 }
 
 .pet-kitty-btn {
-  color: var(--teal-deep);
-  background: var(--mint);
+  color: var(--red-deep);
+  background: var(--rust);
   border: 3px solid var(--white);
 }
 

@@ -1,14 +1,9 @@
-/* ===== Thought Wrench Toolkit — game styles =====
-   Reuses the color variables & fonts from ../../style.css
-   No rounded corners anywhere on purpose.
-*/
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -20,9 +15,6 @@
 .game-page .page-header {
   margin-bottom: 20px;
 }
-
-
-/* ===== Game Stage ===== */
 
 .game-stage {
   position: relative;
@@ -37,12 +29,10 @@
   content: "";
   position: absolute;
   inset: 0;
-
   background-image: url("images/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   opacity: 0.8;
   z-index: 0;
 }
@@ -68,7 +58,7 @@
   padding: 15px 40px;
   font-weight: 700;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: 3px solid var(--white);
   border-radius: 0;
   cursor: pointer;
@@ -82,7 +72,6 @@
   outline: none;
 }
 
-/* ===== Progress gauge ===== */
 .gauge-wrap {
   display: flex;
   flex-direction: column;
@@ -91,7 +80,7 @@
   margin: 0 auto 28px;
 
   background: rgba(255, 255, 255, 0.85);
-  border: 3px solid var(--teal-deep);
+  border: 3px solid var(--red-deep);
   padding: 15px 25px;
   width: fit-content;
 }
@@ -115,7 +104,7 @@
 
 .gauge-fill {
   fill: none;
-  stroke: var(--teal-deep);
+  stroke: var(--red-deep);
   stroke-width: 14;
   stroke-linecap: round;
   stroke-dasharray: 282.6;
@@ -129,13 +118,13 @@
 }
 
 .gauge-needle line {
-  stroke: var(--teal-deep);
+  stroke: var(--red-deep);
   stroke-width: 4;
   stroke-linecap: round;
 }
 
 .gauge-needle circle {
-  fill: var(--teal-deep);
+  fill: var(--red-deep);
 }
 
 .gauge-label {
@@ -143,14 +132,14 @@
   font-weight: 700;
   font-size: 1.1rem;
   margin-top: -6px;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
 .status-chip {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  background: var(--teal-deep);
+  background: var(--red-deep);
   color: var(--white);
   padding: 7px 18px;
   border-radius: 0;
@@ -160,7 +149,6 @@
 .status-chip.good { background: #3f7d4a; }
 .status-chip.bad { background: #b23b30; }
 
-/* ===== Board layout ===== */
 .board {
   max-width: 1100px;
   margin: 0 auto 40px;
@@ -183,7 +171,7 @@
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.1rem;
   text-align: center;
-  background: var(--teal-deep);
+  background: var(--red-deep);
   color: var(--white);
   padding: 10px;
   margin: 0;
@@ -197,7 +185,7 @@
 
 .cards {
   background: lightgray;
-  border: 2px dashed var(--sky);
+  border: 2px dashed var(--steel-light);
   border-top: none;
   border-radius: 0;
   padding: 10px;
@@ -208,11 +196,10 @@
   box-shadow: var(--shadow-soft);
 }
 
-/* ===== Broken thought cards ===== */
 .trap-card {
   position: relative;
   background: var(--white);
-  border: 2px solid var(--sky);
+  border: 2px solid var(--steel-light);
   border-radius: 0;
     padding: 10px 12px 10px 48px;
     min-height: 54px;
@@ -222,7 +209,7 @@
 }
 
 .trap-card.dragover {
-  border-color: var(--teal-deep);
+  border-color: var(--red-deep);
   box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.25);
 }
 
@@ -239,7 +226,7 @@
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   margin: 0 0 2px;
 }
 
@@ -247,7 +234,7 @@
   font-style: italic;
   font-weight: 600;
   font-size: 0.92rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   margin: 0;
 }
 
@@ -286,10 +273,9 @@
   40%, 80% { transform: translateX(6px); }
 }
 
-/* ===== Wrench tool cards ===== */
 .tool-card {
-  background: var(--seafoam);
-  border: 2px solid var(--mint);
+  background: var(--pale-rust);
+  border: 2px solid var(--rust);
   border-radius: 0;
     padding: 8px 10px;
   display: flex;
@@ -302,7 +288,7 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   box-shadow: var(--shadow-soft);
 }
 
@@ -311,7 +297,7 @@
 }
 
 .tool-card.selected {
-  outline: 3px solid var(--teal-deep);
+  outline: 3px solid var(--red-deep);
   transform: translateY(-2px);
 }
 
@@ -334,10 +320,7 @@
   height: 22px;
   flex-shrink: 0;
 }
-/* ===== Complete overlay =====
-   Uses an explicit .is-visible class (same pattern as the trivia board)
-   instead of the [hidden] attribute, so nothing in the stylesheet can
-   accidentally out-rank it and force the popup to show immediately. */
+
 .complete-overlay {
   display: none;
   position: fixed;
@@ -355,7 +338,7 @@
 
 .complete-card {
   background: var(--white);
-  border: 3px solid var(--teal-deep);
+  border: 3px solid var(--red-deep);
   border-radius: 0;
   padding: 36px 32px;
   text-align: center;
@@ -367,7 +350,7 @@
   width: 56px;
   height: 56px;
   border-radius: 0;
-  background: var(--teal-deep);
+  background: var(--red-deep);
   color: var(--white);
   font-size: 1.6rem;
   display: flex;
@@ -378,13 +361,13 @@
 
 .complete-card h2 {
   font-family: 'Baloo 2', sans-serif;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   margin: 0 0 8px;
 }
 
 .complete-card p {
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   margin: 0 0 20px;
 }
 
@@ -392,7 +375,7 @@
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  background: var(--teal-deep);
+  background: var(--red-deep);
   color: var(--white);
   border: none;
   border-radius: 0;
@@ -408,13 +391,12 @@
   outline: none;
 }
 
-/* ===== Toast ===== */
 .toast {
   position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: var(--teal-text);
+  background: var(--charcoal-red);
   color: var(--white);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;

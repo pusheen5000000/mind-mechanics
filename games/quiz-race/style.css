@@ -1,13 +1,9 @@
-/* ===== Mind Mechanics Race — game styles =====
-   Reuses the color variables from ../../style.css
-*/
-
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   text-decoration: none;
 }
 
@@ -20,44 +16,33 @@
   margin-bottom: 24px;
 }
 
-/* ===== Setup card ===== */
-
 .setup-card {
   max-width: 420px;
   width: 90%;
-
   margin: 100px auto 32px;
-
-  background: var(--mint);
+  background: var(--rust);
   border: 3px solid var(--white);
-
   box-shadow: var(--shadow-soft);
-
   padding: 32px 28px;
-
   display: flex;
   flex-direction: column;
   gap: 18px;
-
   text-align: center;
 }
 
 .name-field input {
   font-family: 'Quicksand', sans-serif;
   font-size: 1rem;
-
   padding: 10px 14px;
-
   border: 3px solid var(--white);
-
-  background: var(--sky);
-  color: var(--teal-text);
+  background: var(--steel-light);
+  color: var(--charcoal-red);
 }
 
 .name-field label {
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
 }
 
 .name-field input {
@@ -65,16 +50,15 @@
   font-size: 1rem;
   padding: 10px 14px;
   border-radius: 0;
-  border: 2px solid var(--sky);
+  border: 2px solid var(--steel-light);
   background: var(--white);
-  color: var(--teal-text);
+  color: var(--charcoal-red);
 }
 
 .name-field input:focus-visible {
-  outline: 2px solid var(--teal-deep);
+  outline: 2px solid var(--red-deep);
   outline-offset: 2px;
 }
-/* ===== Start Overlay ===== */
 
 .start-overlay {
   position: absolute;
@@ -91,7 +75,7 @@
   padding: 20px 45px;
   font-weight: 700;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: 3px solid var(--white);
   border-radius: 0;
   cursor: pointer;
@@ -105,16 +89,9 @@
   outline: none;
 }
 
-/* ===== Visibility toggle pattern =====
-   default hidden via display:none, toggled with .is-visible / .is-hidden
-   rather than the [hidden] attribute (specificity conflicts elsewhere in
-   this project were traced back to that pattern). */
-
 .is-hidden {
   display: none !important;
 }
-
-/* ===== Race area ===== */
 
 .race-wrap {
   max-width: 720px;
@@ -127,7 +104,7 @@
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border-radius: 0;
   padding: 10px 16px;
   margin-bottom: 18px;
@@ -135,11 +112,9 @@
 }
 
 .track {
-  background: var(--sky);
+  background: var(--steel-light);
   border: 3px solid var(--white);
-
   box-shadow: var(--shadow-soft);
-
   padding: 20px 60px 20px 20px;
 }
 
@@ -162,7 +137,7 @@
   display: block;
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--teal-deep);
+  color: var(--red-deep);
   margin-bottom: 6px;
 }
 
@@ -173,7 +148,7 @@
   background: repeating-linear-gradient(
     90deg,
     var(--steel) 0 24px,
-    var(--sky) 24px 48px
+    var(--steel-light) 24px 48px
   );
   overflow: hidden;
 }
@@ -192,14 +167,10 @@
   display: block;
 }
 
-/* ===== Question card ===== */
-
 .question-card {
-  background: var(--seafoam);
+  background: var(--pale-rust);
   border: 3px solid var(--white);
-
   box-shadow: var(--shadow-soft);
-
   padding: 24px;
   text-align: center;
 }
@@ -220,7 +191,7 @@
 .question-text {
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.25rem;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   margin: 0 0 18px;
   line-height: 1.35;
 }
@@ -240,22 +211,17 @@
 .answer-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-
-  color: var(--teal-text);
-
+  color: var(--charcoal-red);
   background: #F6B8B0;
-
   border: 3px solid var(--white);
-
   padding: 12px 14px;
-
   cursor: pointer;
 }
 
 .answer-btn:hover:not(:disabled),
 .answer-btn:focus-visible {
   transform: translateY(-2px);
-  border-color: var(--teal-deep);
+  border-color: var(--red-deep);
   outline: none;
 }
 
@@ -280,10 +246,8 @@
   min-height: 1.4em;
   margin-top: 14px;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: var(--red-deep);
 }
-
-/* ===== Winner overlay ===== */
 
 .winner-overlay {
   display: none;
@@ -316,7 +280,7 @@
 }
 
 .winner-card h2 {
-  color: var(--teal-deep);
+  color: var(--red-deep);
   font-family: 'Baloo 2', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -333,7 +297,7 @@
   font-weight: 700;
   font-size: 1rem;
   color: var(--white);
-  background: var(--teal-deep);
+  background: var(--red-deep);
   border: none;
   border-radius: 0;
   padding: 12px 24px;
@@ -348,34 +312,27 @@
   outline: none;
 }
 
-/* ===== Race Game Stage ===== */
-
 .race-stage {
   position: relative;
   min-height: 600px;
   padding: 35px 25px;
   overflow: hidden;
-
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
 }
 
-/* background image like Kitty stage */
 .race-stage::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background-image: url("images/race-background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   opacity: 0.8;
   z-index: 0;
 }
 
-/* keep game above background */
 .race-stage > * {
   position: relative;
   z-index: 1;
@@ -385,7 +342,7 @@
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--charcoal-red);
   font-size: 1rem;
   line-height: 1.5;
   margin: 24px auto 0;
