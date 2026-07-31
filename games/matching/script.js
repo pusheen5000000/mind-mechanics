@@ -142,6 +142,38 @@ let PAIRS = [];
   const completeOverlay = document.getElementById("completeOverlay");
   const restartBtn = document.getElementById("restartBtn");
 
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const gameStage = document.getElementById('game-stage');
+  const completeOverlayEl = document.getElementById('completeOverlay');
+  const toastEl = document.getElementById('toast');
+  const completeOverlayHome = completeOverlayEl.parentElement;
+  const toastHome = toastEl.parentElement;
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      gameStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      gameStage.appendChild(completeOverlayEl);
+      gameStage.appendChild(toastEl);
+    } else {
+      completeOverlayHome.appendChild(completeOverlayEl);
+      toastHome.appendChild(toastEl);
+    }
+  });
   const GAUGE_DASH = 282.6;
   let fixedCount = 0;
   let selectedTool = null; // for tap-to-select fallback

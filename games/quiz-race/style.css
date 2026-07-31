@@ -357,3 +357,57 @@
   justify-content: center;
   z-index: 20;
 }
+
+.fullscreen-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--charcoal-red);
+  border: 3px solid var(--white);
+  border-radius: 0;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.fullscreen-btn:hover,
+.fullscreen-btn:focus-visible {
+  transform: translateY(-2px);
+  background: var(--pale-rust);
+  outline: none;
+}
+
+.race-stage:fullscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.race-stage:fullscreen::before {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+}
+
+
+.race-stage::backdrop {
+  background: var(--white, #fff);
+}

@@ -332,3 +332,45 @@
   transform: translateY(-3px);
   outline: none;
 }
+.fullscreen-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--charcoal-red);
+  border: 3px solid var(--white);
+  border-radius: 0;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.fullscreen-btn:hover,
+.fullscreen-btn:focus-visible {
+  transform: translateY(-2px);
+  background: var(--pale-rust);
+  outline: none;
+}
+
+.pond-stage:fullscreen {
+  min-height: 100vh;
+  padding-top: 60px;
+  overflow: visible;
+}
+
+.pond-stage::backdrop {
+  background: var(--white, #fff);
+}

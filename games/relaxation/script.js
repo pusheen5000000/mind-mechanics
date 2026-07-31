@@ -20,6 +20,35 @@
   const startOverlay = document.getElementById('start-overlay');
 
 
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const relaxOverlayHome = relaxOverlay.parentElement;
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      stage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      stage.appendChild(relaxOverlay);
+    } else {
+      relaxOverlayHome.appendChild(relaxOverlay);
+    }
+
+    // Recalculate the toolbox position since the stage size just changed
+    setToolboxX(toolboxX);
+  });
   const RELAX_EXERCISES = [
     {
       title: 'Belly Breathing',

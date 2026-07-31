@@ -20,6 +20,36 @@
   const playBtn = document.getElementById("play-btn");
   const startOverlay = document.getElementById("start-overlay");
 
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const pondStage = document.getElementById('pond-stage');
+const quizOverlayEl = document.getElementById('quiz-overlay');
+const quizOverlayHome = quizOverlayEl.parentElement; // remember where it started (body)
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      pondStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    // Move the quiz overlay so it's still visible while fullscreened
+    if (isFullscreen) {
+      pondStage.appendChild(quizOverlayEl);
+    } else {
+      quizOverlayHome.appendChild(quizOverlayEl);
+    }
+  });
+
   let gameStarted = false;
 
   const FISH_IMAGES = [

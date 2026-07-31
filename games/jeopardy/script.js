@@ -32,7 +32,36 @@
   const playAgainBtn = document.getElementById('play-again-btn');
 
   const VALUES = [100, 200, 300, 400];
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const boardStage = document.getElementById('board-stage');
+  const questionOverlayHome = questionOverlay.parentElement;
+  const winnerOverlayHome = winnerOverlay.parentElement;
 
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      boardStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      boardStage.appendChild(questionOverlay);
+      boardStage.appendChild(winnerOverlay);
+    } else {
+      questionOverlayHome.appendChild(questionOverlay);
+      winnerOverlayHome.appendChild(winnerOverlay);
+    }
+  });
   const BOARD = {
     'Thinking Traps': [
       { value: 100, q: 'Believing you can predict the future and assuming it\'s going to be negative.', a: 'Fortune-Telling' },

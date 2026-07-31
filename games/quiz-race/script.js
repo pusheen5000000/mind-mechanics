@@ -26,6 +26,33 @@
 
   const WIN_CORRECT_ANSWERS = 8; // correct answers needed to cross the finish line
 
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const raceStage = document.getElementById('race-stage');
+  const winnerOverlayHome = winnerOverlay.parentElement;
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      raceStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      raceStage.appendChild(winnerOverlay);
+    } else {
+      winnerOverlayHome.appendChild(winnerOverlay);
+    }
+  });
   // Question bank uses only the 9 Thinking Traps from the MindShift poster.
   const QUESTIONS = [
     {

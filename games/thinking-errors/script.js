@@ -56,6 +56,36 @@
   let encourageTimer = null;
   let gameStarted = false;
 
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const quizOverlayHome = quizOverlay.parentElement;
+  const finishOverlayHome = finishOverlay.parentElement;
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      kittyStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      kittyStage.appendChild(quizOverlay);
+      kittyStage.appendChild(finishOverlay);
+    } else {
+      quizOverlayHome.appendChild(quizOverlay);
+      finishOverlayHome.appendChild(finishOverlay);
+    }
+  });
+
   const playBtn = document.getElementById('play-btn');
   const startOverlay = document.getElementById('start-overlay');
 
