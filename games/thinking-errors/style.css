@@ -1,7 +1,7 @@
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--red-deep);
   text-decoration: none;
@@ -18,7 +18,7 @@
 
 .progress-text {
   text-align: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--charcoal-red);
   margin-bottom: 20px;
@@ -71,7 +71,7 @@
 }
 
 .play-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
 
@@ -153,7 +153,7 @@
 
 .encourage-text {
   min-height: 28px;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--red-deep);
@@ -274,7 +274,7 @@
 }
 
 .quiz-option {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--charcoal-red);
@@ -306,7 +306,7 @@
 }
 
 .quiz-feedback {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: #b3392c;
 }
@@ -339,7 +339,7 @@
 
 .strategies-btn {
   display: inline-block;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--red-deep);
@@ -365,7 +365,7 @@
   border-radius: 0;
   padding: 16px 20px 16px 36px;
   margin: 0 0 18px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   color: var(--charcoal-red);
   line-height: 1.5;
@@ -382,7 +382,7 @@
 .relax-done-btn,
 .pet-kitty-btn {
   display: inline-block;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   border: none;

@@ -1,7 +1,7 @@
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--red-deep);
   text-decoration: none;
@@ -53,7 +53,7 @@
 }
 
 .play-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.6rem;
   padding: 15px 40px;
   font-weight: 700;
@@ -128,7 +128,7 @@
 }
 
 .gauge-label {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   margin-top: -6px;
@@ -136,7 +136,7 @@
 }
 
 .status-chip {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   background: var(--red-deep);
@@ -168,7 +168,7 @@
 }
 
 .col-title {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.1rem;
   text-align: center;
   background: var(--red-deep);
@@ -223,7 +223,7 @@
 }
 
 .trap-name {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--red-deep);
@@ -285,7 +285,7 @@
   touch-action: none;
   user-select: none;
   transition: transform 0.15s, opacity 0.2s;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
   color: var(--charcoal-red);
@@ -360,7 +360,7 @@
 }
 
 .complete-card h2 {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: var(--red-deep);
   margin: 0 0 8px;
 }
@@ -372,7 +372,7 @@
 }
 
 .btn-primary {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   background: var(--red-deep);
@@ -398,7 +398,7 @@
   transform: translateX(-50%) translateY(20px);
   background: var(--charcoal-red);
   color: var(--white);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 0;

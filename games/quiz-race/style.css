@@ -1,7 +1,7 @@
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--red-deep);
   text-decoration: none;
@@ -31,7 +31,7 @@
 }
 
 .name-field input {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   padding: 10px 14px;
   border: 3px solid var(--white);
@@ -46,7 +46,7 @@
 }
 
 .name-field input {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   padding: 10px 14px;
   border-radius: 0;
@@ -70,7 +70,7 @@
   z-index: 20;
 }
 .play-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.6rem;
   padding: 20px 45px;
   font-weight: 700;
@@ -100,7 +100,7 @@
 
 .turn-banner {
   text-align: center;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--white);
@@ -189,7 +189,7 @@
 }
 
 .question-text {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.25rem;
   color: var(--charcoal-red);
   margin: 0 0 18px;
@@ -209,7 +209,7 @@
 }
 
 .answer-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--charcoal-red);
   background: #F6B8B0;
@@ -281,7 +281,7 @@
 
 .winner-card h2 {
   color: var(--red-deep);
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -293,7 +293,7 @@
 }
 
 .relax-done-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--white);
@@ -340,7 +340,7 @@
 
 .game-hint {
   text-align: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   color: var(--charcoal-red);
   font-size: 1rem;

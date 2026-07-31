@@ -1,7 +1,7 @@
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   color: var(--red-deep);
   text-decoration: none;
@@ -90,7 +90,7 @@
 
 .name-field input,
 .name-field select {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   padding: 10px 14px;
   border-radius: 0;
@@ -106,7 +106,7 @@
 }
 
 .play-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--white);
@@ -140,7 +140,7 @@
   gap: 2px;
   padding: 10px 20px;
   border-radius: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: var(--white);
   box-shadow: var(--shadow-soft);
   border: 3px solid var(--steel-light);
@@ -154,7 +154,7 @@
 }
 
 .team-pill-score {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--charcoal-red);
@@ -171,7 +171,7 @@
 }
 
 .board-header {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   text-align: center;
@@ -185,7 +185,7 @@
 }
 
 .board-tile {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--charcoal-red);
@@ -266,7 +266,7 @@
 }
 
 .modal-question {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.3rem;
   color: var(--charcoal-red);
   line-height: 1.4;
@@ -301,7 +301,7 @@
 }
 
 .award-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--charcoal-red);
@@ -321,7 +321,7 @@
 }
 
 .skip-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   color: var(--charcoal-red);
@@ -348,7 +348,7 @@
 
 .winner-card h2 {
   color: var(--red-deep);
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -360,7 +360,7 @@
 }
 
 .relax-done-btn {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--white);
@@ -381,7 +381,7 @@
 
 .game-hint {
   text-align: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   color: var(--charcoal-red);
   font-size: 1rem;
