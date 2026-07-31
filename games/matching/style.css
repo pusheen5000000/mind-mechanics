@@ -445,6 +445,7 @@
   background: var(--pale-rust);
   outline: none;
 }
+
 .game-stage:fullscreen {
   height: 100vh;
   padding-top: 60px;
