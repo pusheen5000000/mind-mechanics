@@ -411,3 +411,11 @@
 .race-stage::backdrop {
   background: var(--white, #fff);
 }
+
+.page-header h1 {
+  display: inline-block;
+  background: #e04b4b;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 0;
+}
