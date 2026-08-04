@@ -1,3 +1,4 @@
+/* ===== Shared game-page elements ===== */
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
@@ -16,6 +17,14 @@
   margin-bottom: 12px;
 }
 
+.page-header h1 {
+  display: inline-block;
+  background: #e04b4b;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 0;
+}
+
 .progress-text {
   text-align: center;
   font-family: 'DM Sans', sans-serif;
@@ -24,6 +33,7 @@
   margin-bottom: 20px;
 }
 
+/* ===== Kitty stage ===== */
 .kitty-stage {
   position: relative;
   width: 100%;
@@ -37,7 +47,6 @@
   border-radius: 0;
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
-
   overflow: hidden;
 }
 
@@ -60,6 +69,27 @@
   z-index: 1;
 }
 
+.kitty-stage:fullscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.kitty-stage:fullscreen::before {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+}
+
+.kitty-stage::backdrop {
+  background: var(--white, #fff);
+}
+
+/* ===== Start overlay ===== */
 .start-overlay {
   position: absolute;
   inset: 0;
@@ -94,6 +124,7 @@
   outline: none;
 }
 
+/* ===== Thought bubbles ===== */
 .bubble-row {
   display: flex;
   flex-wrap: wrap;
@@ -151,6 +182,13 @@
   pointer-events: none;
 }
 
+@media (max-width: 600px) {
+  .thought-bubble {
+    width: 64px;
+    height: 64px;
+  }
+}
+
 .encourage-text {
   min-height: 28px;
   font-family: 'DM Sans', sans-serif;
@@ -169,6 +207,7 @@
   transform: translateY(0);
 }
 
+/* ===== Cat sprite + petting mode ===== */
 .cat-wrap {
   position: relative;
   display: flex;
@@ -182,6 +221,12 @@
   object-fit: contain;
   filter: drop-shadow(0 6px 10px rgba(45, 95, 93, 0.2));
   transition: transform 0.15s ease;
+}
+
+@media (max-width: 600px) {
+  .cat-sprite {
+    width: 170px;
+  }
 }
 
 .kitty-stage.petting-mode {
@@ -227,13 +272,9 @@
   color: var(--charcoal-red);
 }
 
+/* ===== Quiz overlay ===== */
 .quiz-overlay[hidden],
 .finish-overlay[hidden] {
-  display: none !important;
-}
-
-.pet-kitty-btn[hidden],
-.strategies-btn[hidden] {
   display: none !important;
 }
 
@@ -311,6 +352,7 @@
   color: #b3392c;
 }
 
+/* ===== Finish overlay ===== */
 .finish-cat {
   width: 150px;
   height: auto;
@@ -379,6 +421,11 @@
   margin-bottom: 0;
 }
 
+.strategies-btn[hidden],
+.pet-kitty-btn[hidden] {
+  display: none !important;
+}
+
 .relax-done-btn,
 .pet-kitty-btn {
   display: inline-block;
@@ -413,16 +460,7 @@
   outline: none;
 }
 
-@media (max-width: 600px) {
-  .cat-sprite {
-    width: 170px;
-  }
-  .thought-bubble {
-    width: 64px;
-    height: 64px;
-  }
-}
-
+/* ===== Fullscreen toggle button ===== */
 .fullscreen-btn {
   position: absolute;
   bottom: 12px;
@@ -454,32 +492,4 @@
   transform: translateY(-2px);
   background: var(--pale-rust);
   outline: none;
-}
-
-.kitty-stage:fullscreen {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: safe center;
-  align-items: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.kitty-stage:fullscreen::before {
-  position: fixed;
-  inset: 0;
-  height: 100vh;
-}
-
-.kitty-stage::backdrop {
-  background: var(--white, #fff);
-}
-
-.page-header h1 {
-  display: inline-block;
-  background: #e04b4b;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 0;
 }

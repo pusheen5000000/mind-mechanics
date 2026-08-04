@@ -26,12 +26,12 @@
   <section class="game-stage" id="game-stage">
     <button type="button" class="fullscreen-btn" id="fullscreen-btn" aria-label="Toggle fullscreen">⛶</button>
 
+    <!-- Shown before the player starts; hidden by script.js on play -->
     <div class="start-overlay" id="start-overlay">
-      <button class="play-btn" id="play-btn">
-        Play
-      </button>
+      <button class="play-btn" id="play-btn">Play</button>
     </div>
 
+    <!-- Progress gauge -->
     <section class="gauge-wrap" aria-label="Progress">
       <div class="gauge">
         <svg viewBox="0 0 200 110" class="gauge-svg">
@@ -47,8 +47,8 @@
       <div class="status-chip" id="statusChip">Pick up a wrench to begin</div>
     </section>
 
+    <!-- Drag-and-drop board: wrench definitions vs. broken thoughts -->
     <div class="board">
-
       <div class="column column-tools">
         <h2 class="col-title">Toolbox Definitions</h2>
         <div class="cards tools" id="toolsList"></div>
@@ -58,13 +58,13 @@
         <h2 class="col-title">Thinking traps</h2>
         <div class="cards traps" id="trapsList"></div>
       </div>
-
     </div>
 
   </section>
 
 </main>
 
+<!-- Win screen -->
 <div class="complete-overlay" id="completeOverlay">
   <div class="complete-card">
     <div class="complete-badge">&#10003;</div>

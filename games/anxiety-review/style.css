@@ -21,14 +21,11 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-
   width: fit-content;
   margin: 0 auto 20px;
-
   background: rgba(255, 255, 255, 0.85);
   padding: 3px 15px;
   border-radius: 0;
-
   box-shadow: var(--shadow-soft);
   border: 3px solid var(--white);
 }
@@ -75,6 +72,7 @@
   opacity: 0.55;
   z-index: 0;
 }
+
 .pond-stage > * {
   position: relative;
   z-index: 1;
@@ -146,6 +144,7 @@
   color: var(--charcoal-red);
 }
 
+/* ===== Quiz popup ===== */
 .quiz-overlay[hidden] {
   display: none !important;
 }
@@ -257,25 +256,7 @@
   color: #b3392c;
 }
 
-.caught-fish {
-    position: absolute;
-    width: 80px;
-    height: auto;
-    pointer-events: none;
-    animation: popIn .4s ease;
-}
-
-@keyframes popIn {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
+/* ===== Caught fish (spawned into the pond after a correct answer) ===== */
 .caught-fish-container {
   position: absolute;
   inset: 0;
@@ -291,14 +272,11 @@
 }
 
 @keyframes swim {
-  from {
-    transform: translateX(-30px) translateY(0);
-  }
-  to {
-    transform: translateX(30px) translateY(-25px);
-  }
+  from { transform: translateX(-30px) translateY(0); }
+  to { transform: translateX(30px) translateY(-25px); }
 }
 
+/* ===== Start overlay ===== */
 .start-overlay {
   position: absolute;
   inset: 0;
@@ -313,16 +291,12 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
-
   color: var(--white);
   background: var(--red-deep);
-
   border: 3px solid var(--white);
   border-radius: 0;
-
   padding: 14px 30px;
   cursor: pointer;
-
   box-shadow: var(--shadow-soft);
   transition: transform 0.15s ease;
 }
@@ -332,28 +306,24 @@
   transform: translateY(-3px);
   outline: none;
 }
+
 .fullscreen-btn {
   position: absolute;
   bottom: 12px;
   right: 12px;
   z-index: 10;
-
   width: 38px;
   height: 38px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 1.1rem;
   line-height: 1;
-
   background: rgba(255, 255, 255, 0.85);
   color: var(--charcoal-red);
   border: 3px solid var(--white);
   border-radius: 0;
   cursor: pointer;
-
   box-shadow: var(--shadow-soft);
   transition: transform 0.15s ease, background 0.15s ease;
 }

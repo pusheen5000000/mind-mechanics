@@ -1,13 +1,13 @@
 /* ===== Mind Mechanics Workshop — Style Sheet =====
    Palette (workshop red/steel scheme):
-   --steel-light #D9DEE3  (light steel)
-   --rust        #E8A0A0  (soft rust/red accent)
-   --pale-rust   #F0D9D0  (warm pale rust)
-   --steel-gray  #C9C9D9  (steel-violet gray)
-   --red-deep    #B71C1C  (headings / accents — workshop red)
-   --charcoal-red #4A2C2C (body text — warm charcoal-red)
-   --gray-bg     #c2c1c1  (page background)
-   --white       #FFFFFF
+   --steel-light  #D9DEE3  (light steel)
+   --rust         #E8A0A0  (soft rust/red accent)
+   --pale-rust    #F0D9D0  (warm pale rust)
+   --steel-gray   #C9C9D9  (steel-violet gray)
+   --red-deep     #B71C1C  (headings / accents — workshop red)
+   --charcoal-red #4A2C2C  (body text — warm charcoal-red)
+   --gray-bg      #c2c1c1  (page background)
+   --white        #FFFFFF
 */
 
 :root {
@@ -67,12 +67,8 @@ h1, h2, h3 {
 }
 
 @keyframes scroll-banner {
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
 }
 
 /* ===== Layout ===== */
@@ -117,15 +113,11 @@ h1, h2, h3 {
 }
 
 @media (max-width: 800px) {
-  .game-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .game-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 420px) {
-  .game-grid {
-    grid-template-columns: 1fr;
-  }
+  .game-grid { grid-template-columns: 1fr; }
 }
 
 .game-card {
@@ -154,47 +146,10 @@ h1, h2, h3 {
   outline-offset: 3px;
 }
 
-.game-card--rust       { background: var(--rust); }
+.game-card--rust        { background: var(--rust); }
 .game-card--steel-light { background: var(--steel-light); }
-.game-card--pale-rust  { background: var(--pale-rust); }
-.game-card--steel-gray { background: var(--steel-gray); }
-
-/* ===== Parts Pickup Breathing card ===== */
-/* No car-parts art yet, so this card uses a flat color + emoji icon
-   fallback instead of a background image. Swap in a PNG later the same
-   way the other cards use their background images. */
-/* ===== Parts Pickup background ===== */
-/* ===== Parts Pickup background ===== */
-.parts-pickup-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.parts-pickup-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("images/carparts.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.65;
-  z-index: 0;
-}
-
-.parts-pickup-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Icon stays invisible but keeps its reserved space so the heading below
-   lines up with cards that use an empty (spacer) icon div, like Kitty
-   and Bunny. Using visibility instead of display keeps the layout box. */
-.parts-pickup-card .game-icon {
-  visibility: hidden;
-}
+.game-card--pale-rust   { background: var(--pale-rust); }
+.game-card--steel-gray  { background: var(--steel-gray); }
 
 .game-icon {
   width: 32px;
@@ -207,6 +162,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
 }
+
 .game-card h2 {
   font-size: 0.95rem;
   margin-bottom: 4px;
@@ -218,29 +174,65 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
-/* ===== Thinking Errors background (unchanged) ===== */
-.catthink-card {
+.game-card h2,
+.game-card p {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 0;
+  padding: 3px 10px;
+  box-shadow: 0 4px 10px rgba(183, 28, 28, 0.12);
+}
+
+/* ===== Game card background images =====
+   Each card overlays a themed image behind its content via ::before,
+   with content lifted to z-index: 1 so text stays readable. */
+.parts-pickup-card,
+.catthink-card,
+.anxiety-card,
+.race-card,
+.jeopardy-card,
+.wrench-card {
   position: relative;
   overflow: hidden;
 }
 
-.catthink-card::before {
+.parts-pickup-card::before,
+.catthink-card::before,
+.anxiety-card::before,
+.race-card::before,
+.jeopardy-card::before,
+.wrench-card::before {
   content: "";
   position: absolute;
   inset: 0;
-
-  background-image: url("images/catthink.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   opacity: 0.65;
   z-index: 0;
 }
 
-.catthink-card > * {
+.parts-pickup-card > *,
+.catthink-card > *,
+.anxiety-card > *,
+.race-card > *,
+.jeopardy-card > *,
+.wrench-card > * {
   position: relative;
   z-index: 1;
+}
+
+.parts-pickup-card::before { background-image: url("images/carparts.png"); }
+.catthink-card::before     { background-image: url("images/catthink.png"); }
+.anxiety-card::before      { background-image: url("images/bunny.png"); opacity: 0.67; }
+.race-card::before         { background-image: url("images/race.png"); }
+.jeopardy-card::before     { background-image: url("images/jep.jpg"); }
+.wrench-card::before       { background-image: url("images/wrench.jpg"); }
+
+/* Parts Pickup and Race have no dedicated icon art yet, so their icon
+   div is hidden but keeps its space, lining up with cards that use it. */
+.parts-pickup-card .game-icon,
+.race-card .game-icon {
+  visibility: hidden;
 }
 
 /* ===== About section ===== */
@@ -265,34 +257,27 @@ h1, h2, h3 {
   line-height: 1.5;
 }
 
+/* ===== Cursor sparkle trail ===== */
 .sparkle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 0;
-    pointer-events: none;
-    box-shadow:
-        0 0 6px rgba(255,255,255,0.8),
-        0 0 12px rgba(168,216,234,0.6);
-    animation: sparkleFade 1.5s ease-out forwards;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0;
+  pointer-events: none;
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(168, 216, 234, 0.6);
+  animation: sparkleFade 1.5s ease-out forwards;
 }
 
 @keyframes sparkleFade {
-    from {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    to {
-        transform: scale(0.2) translateY(10px);
-        opacity: 0;
-    }
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(0.2) translateY(10px); opacity: 0; }
 }
 
 /* ===== Workshop hazard-stripe border decoration =====
-   Straight top/bottom stripe bars replace the old vine border — keeps
-   the clean, non-skewed layout while reading as "workshop" rather than
-   "garden". */
+   Straight top/bottom stripe bars, workshop-themed page frame. */
 .workshop-decor {
   position: fixed;
   inset: 0;
@@ -327,42 +312,8 @@ h1, h2, h3 {
   color: #7d6b6b;
 }
 
-.game-card h2,
-.game-card p {
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 0;
-  padding: 3px 10px;
-  box-shadow: 0 4px 10px rgba(183, 28, 28, 0.12);
-}
-
-/* ===== Anxiety Review background (unchanged) ===== */
-.anxiety-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.anxiety-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("images/bunny.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.67;
-  z-index: 0;
-}
-
-
-.anxiety-card > * {
-  position: relative;
-  z-index: 1;
-}
-
 /* ===== Glow behind title (home page only) =====
-   Replaces the old cloud.png with a CSS glow — no image asset needed. */
+   CSS-only glow — no image asset needed. */
 .home-header {
   position: relative;
 }
@@ -392,104 +343,7 @@ h1, h2, h3 {
   font-size: 3rem;
 }
 
-.workshop-icons span:nth-child(1) {
-  top: 15%;
-  left: 8%;
-}
-
-.workshop-icons span:nth-child(2) {
-  top: 60%;
-  right: 6%;
-}
-
-.workshop-icons span:nth-child(3) {
-  top: 35%;
-  right: 10%;
-}
-
-.workshop-icons span:nth-child(4) {
-  bottom: 12%;
-  left: 10%;
-}
-
-/* ===== Quiz Race background ===== */
-.race-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.race-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("images/race.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.65;
-  z-index: 0;
-}
-
-.race-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Icon stays invisible but keeps its reserved space so the heading below
-   lines up with cards that use an empty (spacer) icon div, like Kitty
-   and Bunny. Using visibility instead of display keeps the layout box. */
-.race-card .game-icon {
-  visibility: hidden;
-}
-
-/* ===== Jeopardy background ===== */
-.jeopardy-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.jeopardy-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("images/jep.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.65;
-  z-index: 0;
-}
-
-.jeopardy-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== Thought Wrench Matching background ===== */
-.wrench-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.wrench-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("images/wrench.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.65;
-  z-index: 0;
-}
-
-.wrench-card > * {
-  position: relative;
-  z-index: 1;
-}
+.workshop-icons span:nth-child(1) { top: 15%; left: 8%; }
+.workshop-icons span:nth-child(2) { top: 60%; right: 6%; }
+.workshop-icons span:nth-child(3) { top: 35%; right: 10%; }
+.workshop-icons span:nth-child(4) { bottom: 12%; left: 10%; }

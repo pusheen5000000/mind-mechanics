@@ -1,3 +1,5 @@
+/* ===== Page ===== */
+
 .back-link {
   display: inline-block;
   margin-bottom: 20px;
@@ -16,9 +18,19 @@
   margin-bottom: 24px;
 }
 
+.page-header h1 {
+  display: inline-block;
+  background: #e04b4b;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 0;
+}
+
 .is-hidden {
   display: none !important;
 }
+
+/* ===== Board stage (background + fullscreen container) ===== */
 
 .board-stage {
   position: relative;
@@ -47,6 +59,67 @@
   z-index: 1;
 }
 
+.board-stage:fullscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  align-items: stretch;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Force full width so max-width + margin:auto can center it properly */
+.board-stage:fullscreen .board-wrap,
+.board-stage:fullscreen .setup-card {
+  width: 100%;
+}
+
+.board-stage:fullscreen::before {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+}
+
+.board-stage::backdrop {
+  background: var(--white, #fff);
+}
+
+.fullscreen-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--charcoal-red);
+  border: 3px solid var(--white);
+  border-radius: 0;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.fullscreen-btn:hover,
+.fullscreen-btn:focus-visible {
+  transform: translateY(-2px);
+  background: var(--pale-rust);
+  outline: none;
+}
+
+/* ===== Start overlay ===== */
+
 .start-overlay {
   position: absolute;
   inset: 0;
@@ -56,6 +129,29 @@
   justify-content: center;
   z-index: 20;
 }
+
+/* Shared button style used for Play, Start Board, and Reveal Answer */
+.play-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--red-deep);
+  border: 3px solid var(--white);
+  border-radius: 0;
+  padding: 20px 40px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover,
+.play-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* ===== Setup screen ===== */
 
 .setup-card {
   max-width: 460px;
@@ -105,25 +201,7 @@
   outline-offset: 2px;
 }
 
-.play-btn {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--white);
-  background: var(--red-deep);
-  border: 3px solid var(--white);
-  border-radius: 0;
-  padding: 20px 40px;
-  cursor: pointer;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease;
-}
-
-.play-btn:hover,
-.play-btn:focus-visible {
-  transform: translateY(-3px);
-  outline: none;
-}
+/* ===== Scoreboard ===== */
 
 .scoreboard {
   display: flex;
@@ -159,6 +237,8 @@
   font-weight: 700;
   color: var(--charcoal-red);
 }
+
+/* ===== Board grid ===== */
 
 .board-wrap {
   max-width: 860px;
@@ -224,6 +304,8 @@
     padding: 8px 2px;
   }
 }
+
+/* ===== Question overlay ===== */
 
 .question-overlay,
 .winner-overlay {
@@ -331,6 +413,8 @@
   cursor: pointer;
 }
 
+/* ===== Winner overlay ===== */
+
 .winner-card {
   background: var(--white);
   border-radius: 0;
@@ -359,7 +443,7 @@
   margin-bottom: 22px;
 }
 
-.relax-done-btn {
+.play-again-btn {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -372,12 +456,14 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.relax-done-btn:hover,
-.relax-done-btn:focus-visible {
+.play-again-btn:hover,
+.play-again-btn:focus-visible {
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
   outline: none;
 }
+
+/* ===== Footer hint ===== */
 
 .game-hint {
   text-align: center;
@@ -388,70 +474,4 @@
   line-height: 1.5;
   margin: 24px auto 0;
   max-width: 700px;
-}
-
-.fullscreen-btn {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  z-index: 10;
-
-  width: 38px;
-  height: 38px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.1rem;
-  line-height: 1;
-
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--charcoal-red);
-  border: 3px solid var(--white);
-  border-radius: 0;
-  cursor: pointer;
-
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.fullscreen-btn:hover,
-.fullscreen-btn:focus-visible {
-  transform: translateY(-2px);
-  background: var(--pale-rust);
-  outline: none;
-}
-
-.board-stage:fullscreen {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: safe center;
-  align-items: stretch;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* NEW: force full width so max-width + margin:auto can center it properly */
-.board-stage:fullscreen .board-wrap,
-.board-stage:fullscreen .setup-card {
-  width: 100%;
-}
-.board-stage:fullscreen::before {
-  position: fixed;
-  inset: 0;
-  height: 100vh;
-}
-
-.board-stage::backdrop {
-  background: var(--white, #fff);;
-}
-
-.page-header h1 {
-  display: inline-block;
-  background: #e04b4b;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 0;
 }

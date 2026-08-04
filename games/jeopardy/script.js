@@ -1,22 +1,24 @@
 (() => {
 
+  // ===== Setup screen elements =====
   const setupCard = document.getElementById('setup-card');
-  const boardWrap = document.getElementById('board-wrap');
   const teamCountSelect = document.getElementById('team-count');
   const team3Field = document.getElementById('team3-field');
   const team4Field = document.getElementById('team4-field');
   const startBtn = document.getElementById('start-board-btn');
 
+  // ===== Board screen elements =====
+  const boardWrap = document.getElementById('board-wrap');
   const scoreboardEl = document.getElementById('scoreboard');
   const boardEl = document.getElementById('board');
 
+  // ===== Start / fullscreen overlay elements =====
   const playBtn = document.getElementById('play-btn');
   const startOverlay = document.getElementById('start-overlay');
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const boardStage = document.getElementById('board-stage');
 
-  playBtn.addEventListener('click', () => {
-    startOverlay.style.display = 'none';
-  });
-  
+  // ===== Question overlay elements =====
   const questionOverlay = document.getElementById('question-overlay');
   const modalCategory = document.getElementById('modal-category');
   const modalQuestion = document.getElementById('modal-question');
@@ -26,42 +28,19 @@
   const awardButtons = document.getElementById('award-buttons');
   const skipBtn = document.getElementById('skip-btn');
 
+  // ===== Winner overlay elements =====
   const winnerOverlay = document.getElementById('winner-overlay');
   const winnerTitle = document.getElementById('winner-title');
   const winnerText = document.getElementById('winner-text');
   const playAgainBtn = document.getElementById('play-again-btn');
 
-  const VALUES = [100, 200, 300, 400];
-  const fullscreenBtn = document.getElementById('fullscreen-btn');
-  const boardStage = document.getElementById('board-stage');
+  // Original parents of the overlays, so they can be moved back when exiting fullscreen
   const questionOverlayHome = questionOverlay.parentElement;
   const winnerOverlayHome = winnerOverlay.parentElement;
 
-  fullscreenBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      boardStage.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen();
-    }
-  });
+  const VALUES = [100, 200, 300, 400];
 
-  document.addEventListener('fullscreenchange', () => {
-    const isFullscreen = !!document.fullscreenElement;
-
-    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
-    fullscreenBtn.setAttribute(
-      'aria-label',
-      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
-    );
-
-    if (isFullscreen) {
-      boardStage.appendChild(questionOverlay);
-      boardStage.appendChild(winnerOverlay);
-    } else {
-      questionOverlayHome.appendChild(questionOverlay);
-      winnerOverlayHome.appendChild(winnerOverlay);
-    }
-  });
+  // ===== Trivia content =====
   const BOARD = {
     'Thinking Traps': [
       { value: 100, q: 'Believing you can predict the future and assuming it\'s going to be negative.', a: 'Fortune-Telling' },
@@ -91,10 +70,46 @@
 
   const CATEGORIES = Object.keys(BOARD);
 
+  // ===== Game state =====
   let teams = [];
   let currentTile = null;
   let tilesRemaining = 0;
 
+  // ----- Start overlay -----
+  playBtn.addEventListener('click', () => {
+    startOverlay.style.display = 'none';
+  });
+
+  // ----- Fullscreen toggle -----
+  // Moves the question/winner overlays into the fullscreen element so they
+  // still render on top while the board is in fullscreen mode.
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      boardStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFullscreen = !!document.fullscreenElement;
+
+    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
+    fullscreenBtn.setAttribute(
+      'aria-label',
+      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
+    );
+
+    if (isFullscreen) {
+      boardStage.appendChild(questionOverlay);
+      boardStage.appendChild(winnerOverlay);
+    } else {
+      questionOverlayHome.appendChild(questionOverlay);
+      winnerOverlayHome.appendChild(winnerOverlay);
+    }
+  });
+
+  // ----- Team setup -----
   function updateTeamFieldVisibility() {
     const count = Number(teamCountSelect.value);
     team3Field.classList.toggle('is-hidden', count < 3);
@@ -104,6 +119,7 @@
   teamCountSelect.addEventListener('change', updateTeamFieldVisibility);
   updateTeamFieldVisibility();
 
+  // ----- Rendering -----
   function renderScoreboard() {
     scoreboardEl.innerHTML = '';
     teams.forEach((team) => {
@@ -129,29 +145,32 @@
     boardEl.innerHTML = '';
     boardEl.style.gridTemplateColumns = `repeat(${CATEGORIES.length}, 1fr)`;
 
-    CATEGORIES.forEach((cat) => {
+    // Category headers
+    CATEGORIES.forEach((category) => {
       const header = document.createElement('div');
       header.className = 'board-header';
-      header.textContent = cat;
+      header.textContent = category;
       boardEl.appendChild(header);
     });
 
-    VALUES.forEach((value, rowIdx) => {
-      CATEGORIES.forEach((cat) => {
-        const item = BOARD[cat][rowIdx];
-        const btn = document.createElement('button');
-        btn.className = 'board-tile';
-        btn.textContent = value;
-        btn.addEventListener('click', () => openQuestion(cat, item, btn));
-        boardEl.appendChild(btn);
+    // Point-value tiles, row by row
+    VALUES.forEach((value, rowIndex) => {
+      CATEGORIES.forEach((category) => {
+        const item = BOARD[category][rowIndex];
+        const tileBtn = document.createElement('button');
+        tileBtn.className = 'board-tile';
+        tileBtn.textContent = value;
+        tileBtn.addEventListener('click', () => openQuestion(category, item, tileBtn));
+        boardEl.appendChild(tileBtn);
       });
     });
 
     tilesRemaining = CATEGORIES.length * VALUES.length;
   }
 
-  function openQuestion(category, item, btnEl) {
-    currentTile = { category, ...item, btnEl };
+  // ----- Question flow -----
+  function openQuestion(category, item, tileBtn) {
+    currentTile = { category, ...item, tileBtn };
 
     modalCategory.textContent = `${category} · ${item.value}`;
     modalQuestion.textContent = item.q;
@@ -160,6 +179,7 @@
     revealBtn.classList.remove('is-hidden');
     awardRow.classList.add('is-hidden');
 
+    // Build one "award points" button per team
     awardButtons.innerHTML = '';
     teams.forEach((team) => {
       const btn = document.createElement('button');
@@ -180,8 +200,8 @@
 
   function closeTile() {
     if (currentTile) {
-      currentTile.btnEl.disabled = true;
-      currentTile.btnEl.textContent = '✓';
+      currentTile.tileBtn.disabled = true;
+      currentTile.tileBtn.textContent = '✓';
     }
     questionOverlay.classList.remove('is-visible');
     tilesRemaining--;
@@ -201,22 +221,25 @@
 
   skipBtn.addEventListener('click', closeTile);
 
+  // ----- Winner screen -----
   function showWinner() {
     const sorted = [...teams].sort((a, b) => b.score - a.score);
-    const top = sorted[0];
-    const tie = sorted.length > 1 && sorted[1].score === top.score;
+    const topScore = sorted[0].score;
+    const winners = sorted.filter((team) => team.score === topScore);
+    const isTie = winners.length > 1;
 
-    if (tie) {
+    if (isTie) {
       winnerTitle.textContent = "It's a tie!";
-      winnerText.textContent = `${sorted.filter(t => t.score === top.score).map(t => t.name).join(' & ')} tied with ${top.score} points. Great teamwork all around!`;
+      winnerText.textContent = `${winners.map((team) => team.name).join(' & ')} tied with ${topScore} points. Great teamwork all around!`;
     } else {
-      winnerTitle.textContent = `${top.name} wins the board!`;
-      winnerText.textContent = `${top.name} finished with ${top.score} points. Nice work spotting those thinking traps and coping skills!`;
+      winnerTitle.textContent = `${winners[0].name} wins the board!`;
+      winnerText.textContent = `${winners[0].name} finished with ${topScore} points. Nice work spotting those thinking traps and coping skills!`;
     }
 
     winnerOverlay.classList.add('is-visible');
   }
 
+  // ----- Board start / restart -----
   startBtn.addEventListener('click', () => {
     const count = Number(teamCountSelect.value);
     const nameInputs = [
@@ -228,8 +251,8 @@
 
     teams = [];
     for (let i = 0; i < count; i++) {
-      const val = nameInputs[i].value.trim();
-      teams.push({ id: i, name: val || `Team ${i + 1}`, score: 0 });
+      const name = nameInputs[i].value.trim();
+      teams.push({ id: i, name: name || `Team ${i + 1}`, score: 0 });
     }
 
     setupCard.classList.add('is-hidden');

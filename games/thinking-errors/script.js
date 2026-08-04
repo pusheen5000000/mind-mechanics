@@ -1,4 +1,5 @@
 (() => {
+  // ===== Data =====
   const THINKING_ERRORS = [
     {
       name: 'Negative Brain Filter',
@@ -28,11 +29,12 @@
 
   const TOTAL = THINKING_ERRORS.length;
   const CAT_SPRITE_COUNT = 6; // cat-0.png (sad) ... cat-5.png (happy)
+  const HEART_COUNT_PER_PET = 5;
 
   // Cycles through after every correct answer, above the cat.
   const ENCOURAGEMENTS = ['Great job!', 'Good work!', 'Kitty is understanding!', 'Kitty is feeling better!', 'Amazing job!', 'You did it!'];
-  const HEART_COUNT_PER_PET = 5;
 
+  // ===== Elements =====
   const kittyStage = document.getElementById('kitty-stage');
   const bubbleRow = document.getElementById('bubble-row');
   const catWrap = document.getElementById('cat-wrap');
@@ -52,14 +54,22 @@
   const strategiesBtn = document.getElementById('strategies-btn');
   const strategiesList = document.getElementById('strategies-list');
 
-  let pettingMode = false;
-  let encourageTimer = null;
-  let gameStarted = false;
+  const playBtn = document.getElementById('play-btn');
+  const startOverlay = document.getElementById('start-overlay');
 
   const fullscreenBtn = document.getElementById('fullscreen-btn');
   const quizOverlayHome = quizOverlay.parentElement;
   const finishOverlayHome = finishOverlay.parentElement;
 
+  // ===== State =====
+  let pettingMode = false;
+  let encourageTimer = null;
+  let gameStarted = false;
+  let currentIndex = 0; // index of the active (unlocked, unsolved) bubble
+  let activeQuestionIndex = null;
+  let bubbles = [];
+
+  // ===== Fullscreen =====
   fullscreenBtn.addEventListener('click', () => {
     if (!document.fullscreenElement) {
       kittyStage.requestFullscreen().catch(() => {});
@@ -86,12 +96,7 @@
     }
   });
 
-  const playBtn = document.getElementById('play-btn');
-  const startOverlay = document.getElementById('start-overlay');
-
-  let currentIndex = 0; // index of the active (unlocked, unsolved) bubble
-  let bubbles = [];
-
+  // ===== Thought bubbles =====
   function buildBubbles() {
     THINKING_ERRORS.forEach((_, i) => {
       const btn = document.createElement('button');
@@ -155,8 +160,7 @@
     }, 1600);
   }
 
-  let activeQuestionIndex = null;
-
+  // ===== Quiz =====
   function openQuiz(index) {
     activeQuestionIndex = index;
     const errorData = THINKING_ERRORS[index];
@@ -220,7 +224,6 @@
   // ===== Pet Kitty mode (after the game is finished) =====
   // Cursor becomes a glove, hovering the cat grows it slightly, and
   // clicking gives a happy little bounce plus a burst of hearts.
-
   function spawnHeartsFromCat() {
     const catRect = catSprite.getBoundingClientRect();
     const stageRect = kittyStage.getBoundingClientRect();
@@ -272,6 +275,7 @@
     finishMessage.textContent = 'Strategies for Thinking Errors';
   });
 
+  // ===== Init =====
   playBtn.addEventListener('click', () => {
     gameStarted = true;
     startOverlay.style.display = 'none';

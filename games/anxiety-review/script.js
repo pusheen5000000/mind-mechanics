@@ -1,7 +1,6 @@
-
 (() => {
   // Anxiety review questions, adapted from the Jeopardy review.
-  // "clue" is read aloud/shown, "correct" is the term the player is fishing for.
+  // "clue" is shown to the player; "correct" is the term they're fishing for.
   const QUESTIONS = [
     { clue: 'Breathing in for 5, holding, and breathing out for 5 to help calm your body.', correct: 'Belly Breathing' },
     { clue: 'Tightening up a muscle really tight, then letting it relax.', correct: 'Progressive Muscle Relaxation' },
@@ -17,87 +16,42 @@
     { clue: 'Thoughts, Feelings, and Actions, all connected together.', correct: 'The Anxiety Triad' },
   ];
 
-  const playBtn = document.getElementById("play-btn");
-  const startOverlay = document.getElementById("start-overlay");
-
-const fullscreenBtn = document.getElementById('fullscreen-btn');
-const pondStage = document.getElementById('pond-stage');
-const quizOverlayEl = document.getElementById('quiz-overlay');
-const quizOverlayHome = quizOverlayEl.parentElement; // remember where it started (body)
-
-  fullscreenBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      pondStage.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen();
-    }
-  });
-
-  document.addEventListener('fullscreenchange', () => {
-    const isFullscreen = !!document.fullscreenElement;
-
-    fullscreenBtn.textContent = isFullscreen ? '⤢' : '⛶';
-    fullscreenBtn.setAttribute(
-      'aria-label',
-      isFullscreen ? 'Exit fullscreen' : 'Toggle fullscreen'
-    );
-
-    // Move the quiz overlay so it's still visible while fullscreened
-    if (isFullscreen) {
-      pondStage.appendChild(quizOverlayEl);
-    } else {
-      quizOverlayHome.appendChild(quizOverlayEl);
-    }
-  });
-
-  let gameStarted = false;
-
-  const FISH_IMAGES = [
-  "images/fish1.png",
-  "images/fish2.png",
-  "images/fish3.png",
-  "images/fish4.png",
-  "images/fish5.png"
-  ];
-  const fishIcon = document.getElementById("fish-icon");
-  let currentFish = "";
-  const caughtFishContainer = document.getElementById('caught-fish-container');
-  const ENCOURAGEMENTS = ['You caught a fish! Great catch!', 'You caught a fish! Nice work!', 'You caught a fish! You\u2019re on a roll!', 'You caught a fish! Keep it up!'];
-
+  const FISH_IMAGES = ["images/fish1.png", "images/fish2.png", "images/fish3.png", "images/fish4.png", "images/fish5.png"];
   const MIN_BITE_DELAY = 1800; // ms before a question pops up
   const MAX_BITE_DELAY = 3600;
+  const ENCOURAGEMENTS = [
+    'You caught a fish! Great catch!',
+    'You caught a fish! Nice work!',
+    'You caught a fish! You\u2019re on a roll!',
+    'You caught a fish! Keep it up!'
+  ];
 
-  const progressText = document.getElementById('progress-text');
-  const encourageText = document.getElementById('encourage-text');
+  // ---------- DOM refs ----------
+  const playBtn = document.getElementById("play-btn");
+  const startOverlay = document.getElementById("start-overlay");
+  const fullscreenBtn = document.getElementById("fullscreen-btn");
+  const pondStage = document.getElementById("pond-stage");
+  const progressText = document.getElementById("progress-text");
+  const encourageText = document.getElementById("encourage-text");
+  const personBtn = document.getElementById("person-btn");
+  const personSprite = document.getElementById("person-sprite");
+  const fishIcon = document.getElementById("fish-icon");
+  const caughtFishContainer = document.getElementById("caught-fish-container");
+  const quizOverlay = document.getElementById("quiz-overlay");
+  const quizOverlayHome = quizOverlay.parentElement; // remember where it started (body)
+  const quizClue = document.getElementById("quiz-clue");
+  const optionA = document.getElementById("option-a");
+  const optionB = document.getElementById("option-b");
+  const quizFeedback = document.getElementById("quiz-feedback");
 
-  const personBtn = document.getElementById('person-btn');
-  const personSprite = document.getElementById('person-sprite');
-
-  function addFishToPond() {
-  const fishContainer = document.getElementById("caught-fish-container");
-
-  const fish = document.createElement("img");
-
-  fish.src = currentFish;
-  fish.className = "caught-fish";
-
-  fish.style.left = Math.random() * 70 + 15 + "%";
-  fish.style.top = Math.random() * 40 + 20 + "%";
-
-  fishContainer.appendChild(fish);
-  }
-
-  const quizOverlay = document.getElementById('quiz-overlay');
-  const quizClue = document.getElementById('quiz-clue');
-  const optionA = document.getElementById('option-a');
-  const optionB = document.getElementById('option-b');
-  const quizFeedback = document.getElementById('quiz-feedback');
-
+  // ---------- State ----------
+  let gameStarted = false;
+  let currentFish = "";
   let fishCaught = 0;
   let questionQueue = [];
-  let biteTimer = null;
   let encourageTimer = null;
 
+  // ---------- Helpers ----------
   function shuffledQuestionOrder() {
     const pool = [...QUESTIONS];
     for (let i = pool.length - 1; i > 0; i--) {
@@ -108,9 +62,7 @@ const quizOverlayHome = quizOverlayEl.parentElement; // remember where it starte
   }
 
   function nextQuestion() {
-    if (questionQueue.length === 0) {
-      questionQueue = shuffledQuestionOrder();
-    }
+    if (questionQueue.length === 0) questionQueue = shuffledQuestionOrder();
     return questionQueue.pop();
   }
 
@@ -119,155 +71,136 @@ const quizOverlayHome = quizOverlayEl.parentElement; // remember where it starte
   }
 
   function showEncouragement() {
-    const message = ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)];
-    encourageText.textContent = message;
-    encourageText.classList.add('show');
-
+    encourageText.textContent = ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)];
+    encourageText.classList.add("show");
     clearTimeout(encourageTimer);
-    encourageTimer = setTimeout(() => {
-      encourageText.classList.remove('show');
-    }, 3000);
+    encourageTimer = setTimeout(() => encourageText.classList.remove("show"), 3000);
   }
 
-function setSprite(state) {
-  personSprite.src = `images/${state}.png`;
-  personSprite.alt =
-    state === "fishing"
-      ? "Person fishing at the pond"
-      : "Person standing by the pond";
-}
+  function setSprite(state) {
+    personSprite.src = `images/${state}.png`;
+    personSprite.alt = state === "fishing" ? "Person fishing at the pond" : "Person standing by the pond";
+  }
 
+  function addFishToPond() {
+    const fish = document.createElement("img");
+    fish.src = currentFish;
+    fish.className = "caught-fish";
+    fish.style.left = Math.random() * 70 + 15 + "%";
+    fish.style.top = Math.random() * 40 + 20 + "%";
+    caughtFishContainer.appendChild(fish);
+  }
+
+  // ---------- Fishing flow ----------
   function startFishing() {
-    personBtn.classList.add('disabled');
-    personBtn.setAttribute('aria-label', 'Fishing... wait for a bite');
-    setSprite('fishing');
+    personBtn.classList.add("disabled");
+    personBtn.setAttribute("aria-label", "Fishing... wait for a bite");
+    setSprite("fishing");
 
     const delay = MIN_BITE_DELAY + Math.random() * (MAX_BITE_DELAY - MIN_BITE_DELAY);
-    biteTimer = setTimeout(openQuiz, delay);
+    setTimeout(openQuiz, delay);
   }
 
   function returnToStanding() {
-    setSprite('standing');
-    personBtn.classList.remove('disabled');
-    personBtn.setAttribute('aria-label', 'Click to go fishing');
+    setSprite("standing");
+    personBtn.classList.remove("disabled");
+    personBtn.setAttribute("aria-label", "Click to go fishing");
   }
 
   function openQuiz() {
-  const questionData = nextQuestion();
+    const questionData = nextQuestion();
+    currentFish = FISH_IMAGES[Math.floor(Math.random() * FISH_IMAGES.length)];
+    fishIcon.src = currentFish;
 
-  // Pick random fish for quiz popup
-  currentFish =
-    FISH_IMAGES[Math.floor(Math.random() * FISH_IMAGES.length)];
+    // Pick a distinct wrong answer from the question pool
+    let wrongPoolIndex;
+    do {
+      wrongPoolIndex = Math.floor(Math.random() * QUESTIONS.length);
+    } while (QUESTIONS[wrongPoolIndex].correct === questionData.correct);
+    const wrongTerm = QUESTIONS[wrongPoolIndex].correct;
 
-  fishIcon.src = currentFish;
+    quizClue.textContent = questionData.clue;
 
-  // Pick wrong answer
-  let wrongPoolIndex;
-  do {
-    wrongPoolIndex = Math.floor(Math.random() * QUESTIONS.length);
-  } while (QUESTIONS[wrongPoolIndex].correct === questionData.correct);
+    const correctFirst = Math.random() < 0.5;
+    const optionAData = correctFirst ? { text: questionData.correct, correct: true } : { text: wrongTerm, correct: false };
+    const optionBData = correctFirst ? { text: wrongTerm, correct: false } : { text: questionData.correct, correct: true };
 
-  const wrongTerm = QUESTIONS[wrongPoolIndex].correct;
+    optionA.textContent = optionAData.text;
+    optionA.dataset.correct = optionAData.correct;
+    optionB.textContent = optionBData.text;
+    optionB.dataset.correct = optionBData.correct;
 
-  quizClue.textContent = questionData.clue;
+    [optionA, optionB].forEach((btn) => {
+      btn.disabled = false;
+      btn.classList.remove("correct", "incorrect");
+    });
 
-  const correctFirst = Math.random() < 0.5;
-
-  const optionAData = correctFirst
-    ? { text: questionData.correct, correct: true }
-    : { text: wrongTerm, correct: false };
-
-  const optionBData = correctFirst
-    ? { text: wrongTerm, correct: false }
-    : { text: questionData.correct, correct: true };
-
-
-  optionA.textContent = optionAData.text;
-  optionA.dataset.correct = optionAData.correct;
-
-  optionB.textContent = optionBData.text;
-  optionB.dataset.correct = optionBData.correct;
-
-
-  [optionA, optionB].forEach((btn) => {
-    btn.disabled = false;
-    btn.classList.remove('correct', 'incorrect');
-  });
-
-  quizFeedback.hidden = true;
-  quizFeedback.classList.remove('success', 'fail');
-
-  quizOverlay.hidden = false;
+    quizFeedback.hidden = true;
+    quizFeedback.classList.remove("success", "fail");
+    quizOverlay.hidden = false;
   }
+
   function closeQuizAndReset() {
     quizOverlay.hidden = true;
     returnToStanding();
   }
 
-  function handleOptionClick(chosenBtn, otherBtn) {
-    // Prevent double answers
+  function handleOptionClick(chosenBtn) {
     optionA.disabled = true;
     optionB.disabled = true;
 
-    const isCorrect = chosenBtn.dataset.correct === 'true';
+    const isCorrect = chosenBtn.dataset.correct === "true";
 
     if (isCorrect) {
-      chosenBtn.classList.add('correct');
-      quizFeedback.classList.add('success');
+      chosenBtn.classList.add("correct");
+      quizFeedback.classList.add("success");
       quizFeedback.hidden = false;
-      
       fishCaught += 1;
       updateProgressText();
       showEncouragement();
       addFishToPond();
-      
-    } else {
-      chosenBtn.classList.add('incorrect');
-      quizFeedback.textContent = 'Not quite! The fish got away...';
-      quizFeedback.classList.add('fail');
-      quizFeedback.hidden = false;
-    }
-
-    if (isCorrect) {
       setTimeout(closeQuizAndReset, 0); // correct answer disappears faster
     } else {
+      chosenBtn.classList.add("incorrect");
+      quizFeedback.textContent = "Not quite! The fish got away...";
+      quizFeedback.classList.add("fail");
+      quizFeedback.hidden = false;
       setTimeout(closeQuizAndReset, 1500); // wrong answer stays longer
     }
   }
 
-  optionA.addEventListener('click', () => handleOptionClick(optionA, optionB));
-  optionB.addEventListener('click', () => handleOptionClick(optionB, optionA));
+  // ---------- Fullscreen ----------
+  fullscreenBtn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      pondStage.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
 
-  personBtn.addEventListener('click', () => {
-    if (!gameStarted) return;
-    if (personBtn.classList.contains('disabled')) return;
+  document.addEventListener("fullscreenchange", () => {
+    const isFullscreen = !!document.fullscreenElement;
+    fullscreenBtn.textContent = isFullscreen ? "⤢" : "⛶";
+    fullscreenBtn.setAttribute("aria-label", isFullscreen ? "Exit fullscreen" : "Toggle fullscreen");
 
+    // Move the quiz overlay so it's still visible while fullscreened
+    (isFullscreen ? pondStage : quizOverlayHome).appendChild(quizOverlay);
+  });
+
+  // ---------- Init ----------
+  optionA.addEventListener("click", () => handleOptionClick(optionA));
+  optionB.addEventListener("click", () => handleOptionClick(optionB));
+
+  personBtn.addEventListener("click", () => {
+    if (!gameStarted || personBtn.classList.contains("disabled")) return;
     startFishing();
   });
+
   playBtn.addEventListener("click", () => {
-  gameStarted = true;
-  startOverlay.style.display = "none";
+    gameStarted = true;
+    startOverlay.style.display = "none";
   });
 
   updateProgressText();
-  setSprite('standing');
+  setSprite("standing");
 })();
-
-function addCaughtFish() {
-  const fish = document.createElement("img");
-
-  fish.src = currentFish;
-  fish.className = "caught-fish";
-
-  // Random spot around the fisher
-  const angle = Math.random() * Math.PI * 2;
-  const radius = 90 + Math.random() * 60;
-
-  fish.style.left =
-      `calc(50% + ${Math.cos(angle) * radius}px)`;
-
-  fish.style.bottom =
-      `${110 + Math.sin(angle) * radius}px`;
-
-  document.getElementById("pond-stage").appendChild(fish);
-}
