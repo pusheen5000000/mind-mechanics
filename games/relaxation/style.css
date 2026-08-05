@@ -55,6 +55,13 @@
   object-fit: contain;
 }
 
+.score-pill strong {
+  display: inline-block;
+  min-width: 1.5ch;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ===== Game stage ===== */
 .game-stage {
   position: relative;
